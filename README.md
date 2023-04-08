@@ -1,16 +1,29 @@
 # medtest
 
-A new Flutter project.
+## Categories 
 
-## Getting Started
+```<Category code>:<title>```
 
-This project is a starting point for a Flutter application.
+- A: Muster zuordnen
+- B: Med.-naturwiss. Grundverständnis
+- C: Schlauchfiguren 
+- D: Quantitative und formale Probleme
+- E: Figuren/Fakten
+- F: Textverständnis
+- G: Reproduktionsphase
+- H: Diagramme und Tabellen
+- I: Konzentration und sorgfältiges Arbeiten
 
-A few resources to get you started if this is your first Flutter project:
+## Question Types 
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Types of questions regarding presentation logic.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TODO do all questions of a single category have the same type? 
+
+TODO give examples to each type
+
+TODO match each type to categories
+
+- textMultipleChoice
+- imageMultipleChoice
+- concentrationMatrix
