@@ -4,12 +4,14 @@ import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 
 class TextMultipleChoiceQuestionWidget extends QuestionWidget {
   final int? selectedIndex;
+  final bool isSimulation;
 
   const TextMultipleChoiceQuestionWidget({
     Key? key,
     required TextMultipleChoiceQuestion question,
     this.selectedIndex,
-    required Function(bool isCorrect) onNextQuestion,
+    required this.isSimulation,
+    required Function(int answerIndex, bool isCorrect) onNextQuestion,
   }) : super(key: key, question: question, onNextQuestion: onNextQuestion);
 
   @override
@@ -57,7 +59,7 @@ class TextMultipleChoiceQuestionWidgetState
               ),
             ),
           ),
-          Divider(),
+          const Divider(),
           SizedBox(
             height: 300,
             child: ListView.builder(
@@ -93,29 +95,47 @@ class TextMultipleChoiceQuestionWidgetState
             ),
           ),
           Align(
-            alignment: Alignment.bottomCenter,
-            child: !_isAnswered
-                ? ElevatedButton(
-                    onPressed: _selectedIndex == null || _isAnswered
-                        ? null
-                        : _onAnswered,
-                    child: const Text('Antwort prüfen'),
-                  )
-                : ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedIndex = null;
-                        _isAnswered = false;
-                        _isCorrect = false;
-                      });
-                      widget.onNextQuestion(_isCorrect);
-                    },
-                    child: const Text('Nächste Frage'),
-                  ),
-          ),
+              alignment: Alignment.bottomCenter,
+              child: widget.isSimulation
+                  ? getSimulationButton()
+                  : getTrainingButton())
         ],
       ),
     );
+  }
+
+  Widget getSimulationButton() {
+    return ElevatedButton(
+      onPressed: () {
+        widget.onNextQuestion(_selectedIndex!, _isCorrect);
+        setState(() {
+          _selectedIndex = null;
+          _isAnswered = false;
+          _isCorrect = false;
+        });
+      },
+      child: const Text('Senden'),
+    );
+  }
+
+  Widget getTrainingButton() {
+    return !_isAnswered
+        ? ElevatedButton(
+            onPressed:
+                _selectedIndex == null || _isAnswered ? null : _onAnswered,
+            child: const Text('Antwort prüfen'),
+          )
+        : ElevatedButton(
+            onPressed: () {
+              widget.onNextQuestion(_selectedIndex!, _isCorrect);
+              setState(() {
+                _selectedIndex = null;
+                _isAnswered = false;
+                _isCorrect = false;
+              });
+            },
+            child: const Text('Nächste Frage'),
+          );
   }
 
   bool checkAnswer() {

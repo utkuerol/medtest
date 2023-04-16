@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medtest/logic/model/category.dart';
-import 'package:medtest/mock_data.dart';
+import 'package:medtest/repository/mock_data.dart';
 import 'package:medtest/pages/home.dart';
 import 'package:medtest/pages/quiz.dart';
+import 'package:medtest/repository/question_repository.dart';
 
 class TrainingMenu extends StatelessWidget {
+  const TrainingMenu({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,36 +51,19 @@ class TrainingMenu extends StatelessWidget {
                               'Wie möchtest du diese Kategorie üben?'),
                           children: <Widget>[
                             SimpleDialogOption(
-                              onPressed: () => Get.off(QuizScreen(
-                                category: category,
-                                questions: MockData.questions,
-                                timeLimit: const Duration(minutes: 2),
-                                isSimulation: true,
-                              )),
+                              onPressed: () => Get.off(getSimulation(category)),
                               child: const Text('Simulation'),
                             ),
                             SimpleDialogOption(
-                              onPressed: () => Get.off(QuizScreen(
-                                category: category,
-                                questions: MockData.questions,
-                                isSimulation: true,
-                              )),
+                              onPressed: () => Get.off(getShuffle(category)),
                               child: const Text('Shuffle'),
                             ),
                             SimpleDialogOption(
-                              onPressed: () => Get.off(QuizScreen(
-                                category: category,
-                                questions: MockData.questions,
-                                isSimulation: true,
-                              )),
+                              onPressed: () => Get.off(getFailed(category)),
                               child: const Text('Zuletzt falsch'),
                             ),
                             SimpleDialogOption(
-                              onPressed: () => Get.off(QuizScreen(
-                                category: category,
-                                questions: MockData.questions,
-                                isSimulation: true,
-                              )),
+                              onPressed: () => Get.off(getFresh(category)),
                               child: const Text('Frisch'),
                             ),
                           ],
@@ -95,6 +81,41 @@ class TrainingMenu extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget getSimulation(String category) {
+    return QuizScreen(
+      category: category,
+      questions: QuestionRepository.getSimulationQuestions(category),
+      isSimulation: true,
+    );
+  }
+
+  Widget getShuffle(String category) {
+    return QuizScreen(
+      category: category,
+      questions: QuestionRepository.getQuestions(
+          category, QuestionRepository.trainingBatchSize),
+      isSimulation: false,
+    );
+  }
+
+  Widget getFresh(String category) {
+    return QuizScreen(
+      category: category,
+      questions: QuestionRepository.getFreshQuestions(
+          category, QuestionRepository.trainingBatchSize),
+      isSimulation: false,
+    );
+  }
+
+  Widget getFailed(String category) {
+    return QuizScreen(
+      category: category,
+      questions: QuestionRepository.getFailedQuestions(
+          category, QuestionRepository.trainingBatchSize),
+      isSimulation: false,
     );
   }
 }

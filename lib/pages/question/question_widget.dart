@@ -3,7 +3,7 @@ import 'package:medtest/logic/model/question.dart';
 
 abstract class QuestionWidget extends StatefulWidget {
   final Question question;
-  final void Function(bool isCorrect) onNextQuestion;
+  final void Function(int answerIndex, bool isCorrect) onNextQuestion;
 
   const QuestionWidget(
       {Key? key, required this.question, required this.onNextQuestion})

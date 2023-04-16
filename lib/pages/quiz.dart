@@ -1,11 +1,16 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:medtest/logic/model/category.dart';
 import 'package:medtest/logic/model/question.dart';
+import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 import 'package:medtest/pages/question/question_widget_builder.dart';
+import 'package:medtest/pages/results.dart';
 
 class QuizScreen extends StatefulWidget {
   final List<Question> questions;
   final String category;
-  final Duration? timeLimit;
   final String? intro;
   final bool isSimulation;
 
@@ -13,7 +18,6 @@ class QuizScreen extends StatefulWidget {
     Key? key,
     required this.questions,
     required this.category,
-    this.timeLimit,
     this.intro,
     required this.isSimulation,
   }) : super(key: key);
@@ -25,8 +29,38 @@ class QuizScreen extends StatefulWidget {
 class QuizScreenState extends State<QuizScreen> {
   int _currentIndex = 0;
   bool _isQuizComplete = false;
+  late List<int?> _userAnswers;
+  late int _remainingTime;
 
-  void _handleNextQuestion(bool isCorrect) {
+  @override
+  void initState() {
+    super.initState();
+    _userAnswers = List.filled(widget.questions.length, null);
+    if (widget.isSimulation) {
+      _remainingTime = getTimeLimitInSeconds();
+      startTimer();
+    } else {
+      _remainingTime = double.maxFinite.toInt();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(getNavbarTitle()),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: _isQuizComplete
+            ? _buildQuizCompleteScreen()
+            : _buildQuestionScreen(),
+      ),
+    );
+  }
+
+  void _handleNextQuestion(int answerIndex, bool isCorrect) {
+    _userAnswers[_currentIndex] = answerIndex;
     if (_currentIndex < widget.questions.length - 1) {
       setState(() {
         _currentIndex++;
@@ -47,49 +81,32 @@ class QuizScreenState extends State<QuizScreen> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-            '${widget.category} - Aufgabe ${_currentIndex + 1}/${widget.questions.length}'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: _isQuizComplete
-            ? _buildQuizCompleteScreen()
-            : _buildQuestionScreen(),
+  Widget _buildIntro() {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Text(
+        widget.intro!,
+        style: const TextStyle(fontSize: 18.0),
       ),
     );
   }
 
   Widget _buildQuestionScreen() {
     final currentQuestion = widget.questions[_currentIndex];
-
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (widget.isSimulation) buildTimer(),
         if (widget.intro != null && _currentIndex == 0) ...[
           _buildIntro(),
-          Divider(),
+          const Divider(),
         ],
         Expanded(
           child: QuestionWidgetBuilder.build(
-            currentQuestion,
-            onNextQuestion: _handleNextQuestion,
-          ),
+              currentQuestion, widget.isSimulation,
+              onNextQuestion: _handleNextQuestion),
         ),
       ],
-    );
-  }
-
-  Widget _buildIntro() {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Text(
-        widget.intro!,
-        style: TextStyle(fontSize: 18.0),
-      ),
     );
   }
 
@@ -98,18 +115,115 @@ class QuizScreenState extends State<QuizScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Quiz complete!'),
+          const Text('Quiz complete!'),
           ElevatedButton(
             onPressed: () {
               _handleReset();
               Navigator.of(context).pop();
             },
-            child: Text('Close'),
+            child: const Text('Close'),
           ),
         ],
       ),
     );
   }
 
-  void _onQuizComplete() {}
+  Widget buildTimer() {
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      color: Colors.blueGrey,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(
+            Icons.hourglass_empty_outlined,
+            size: 30,
+            color: Colors.black,
+          ),
+          const SizedBox(width: 8.0),
+          Text(
+            formatTimeLimit(_remainingTime),
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16.0,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  void _onQuizComplete() {
+    if (widget.isSimulation) {
+      int score = calculateScore();
+      Get.off(QuizCompleteScreen(
+        score: score,
+        totalQuestions: widget.questions.length,
+      ));
+    } else {
+      Get.off(TrainingCompleteScreen(
+          totalQuestions: widget.questions.length, category: widget.category));
+    }
+  }
+
+  int calculateScore() {
+    int correctAnswers = 0;
+    for (int i = 0; i < widget.questions.length; i++) {
+      final question = widget.questions[i] as TextMultipleChoiceQuestion;
+      if (_userAnswers[i] == question.answer) {
+        correctAnswers++;
+      }
+    }
+    return correctAnswers;
+  }
+
+  String getNavbarTitle() {
+    return '${widget.category} - Aufgabe ${_currentIndex + 1}/${widget.questions.length}';
+  }
+
+  int getTimeLimitInSeconds() {
+    const min = 60;
+    // TODO add real time limits for each category
+    switch (widget.category) {
+      case Category.categoryA:
+        return 10 * min;
+      case Category.categoryB:
+        return 20 * min;
+      case Category.categoryC:
+        return 15 * min;
+      default:
+        return 10 * min;
+    }
+  }
+
+  void startTimer() {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (mounted) {
+        setState(() {
+          if (_isQuizComplete) {
+            timer.cancel();
+          }
+          if (_remainingTime > 0) {
+            _remainingTime--;
+          } else {
+            // quiz time's up, show QuizCompleteScreen
+            timer.cancel();
+            Get.off(QuizCompleteScreen(
+              score: calculateScore(),
+              totalQuestions: widget.questions.length,
+            ));
+          }
+        });
+      }
+    });
+  }
+
+  String formatTimeLimit(int seconds) {
+    final Duration duration = Duration(seconds: seconds);
+    String twoDigits(int n) => n.toString().padLeft(2, "0");
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+    String twoDigitSeconds = twoDigits(duration.inSeconds.remainder(60));
+    return "${duration.inHours}:$twoDigitMinutes:$twoDigitSeconds";
+  }
 }
