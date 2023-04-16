@@ -27,3 +27,6 @@ TODO match each type to categories
 - textMultipleChoice
 - imageMultipleChoice
 - concentrationMatrix
+  - numerical
+  - alphabetical 
+- longTextUnderstanding
