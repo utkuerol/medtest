@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medtest/logic/model/category.dart';
-import 'package:medtest/repository/mock_data.dart';
+import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/pages/home.dart';
 import 'package:medtest/pages/quiz.dart';
 import 'package:medtest/repository/question_repository.dart';
@@ -85,37 +85,93 @@ class TrainingMenu extends StatelessWidget {
   }
 
   Widget getSimulation(String category) {
-    return QuizScreen(
-      category: category,
-      questions: QuestionRepository.getSimulationQuestions(category),
-      isSimulation: true,
+    return FutureBuilder<List<Question>>(
+      future: QuestionRepository.getSimulationQuestions(category),
+      builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
+        if (snapshot.hasData) {
+          return QuizScreen(
+            category: category,
+            questions: snapshot.data!,
+            isSimulation: true,
+          );
+        } else if (snapshot.hasError) {
+          return const Text('Error loading simulation questions.');
+        } else {
+          return CircularProgressIndicator();
+        }
+      },
     );
   }
 
-  Widget getShuffle(String category) {
-    return QuizScreen(
-      category: category,
-      questions: QuestionRepository.getQuestions(
+  static Widget getShuffle(String category) {
+    return FutureBuilder<List<Question>>(
+      future: QuestionRepository.getQuestions(
           category, QuestionRepository.trainingBatchSize),
-      isSimulation: false,
+      builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return Center(child: Text('Error: ${snapshot.error}'));
+        }
+        if (snapshot.hasData) {
+          return QuizScreen(
+            category: category,
+            questions: snapshot.data!,
+            isSimulation: false,
+          );
+        }
+        return Center(child: Text('No data available'));
+      },
     );
   }
 
-  Widget getFresh(String category) {
-    return QuizScreen(
-      category: category,
-      questions: QuestionRepository.getFreshQuestions(
+  static Widget getFresh(String category) {
+    return FutureBuilder<List<Question>>(
+      future: QuestionRepository.getFreshQuestions(
           category, QuestionRepository.trainingBatchSize),
-      isSimulation: false,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return QuizScreen(
+            category: category,
+            questions: snapshot.data!,
+            isSimulation: false,
+          );
+        } else if (snapshot.hasError) {
+          return Center(child: Text("Error loading questions."));
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 
-  Widget getFailed(String category) {
-    return QuizScreen(
-      category: category,
-      questions: QuestionRepository.getFailedQuestions(
-          category, QuestionRepository.trainingBatchSize),
-      isSimulation: false,
+  static Widget getFailed(String category) {
+    return FutureBuilder<List<Question>>(
+      future: QuestionRepository.getFailedQuestions(
+        category,
+        QuestionRepository.trainingBatchSize,
+      ),
+      builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
+        if (snapshot.hasData) {
+          return QuizScreen(
+            category: category,
+            questions: snapshot.data!,
+            isSimulation: false,
+          );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Text(
+              'Error: ${snapshot.error}',
+              style: TextStyle(fontSize: 20.0),
+            ),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
     );
   }
 }

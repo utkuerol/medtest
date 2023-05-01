@@ -2,19 +2,21 @@ import 'package:medtest/logic/model/category.dart';
 import 'package:medtest/logic/model/question_type.dart';
 
 class Question {
-  final int id;
-  final String category;
-  final QuestionType type;
+  int id;
+  String category;
+  late QuestionType type;
 
-  Question(this.id, this.category, this.type) {
-    // Check if category is valid
+  Question(this.id, this.category) {
     if (!Category.validCategories.contains(category)) {
       throw ArgumentError('Invalid category');
     }
 
-    // Check if type is valid
-    if (!QuestionType.values.contains(type)) {
-      throw ArgumentError('Invalid type');
+    if (Category.textMultipleChoiceCategories.contains(category)) {
+      type = QuestionType.textMultipleChoice;
+    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
+      type = QuestionType.imageMultipleChoice;
+    } else {
+      throw ArgumentError('Invalid category');
     }
   }
 }

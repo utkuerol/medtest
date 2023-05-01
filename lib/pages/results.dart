@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medtest/pages/home.dart';
-import 'package:medtest/pages/quiz.dart';
-import 'package:medtest/repository/question_repository.dart';
+import 'package:medtest/pages/training_menu.dart';
 
 class QuizCompleteScreen extends StatelessWidget {
   final int score;
@@ -73,29 +72,17 @@ class TrainingCompleteScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Get.off(QuizScreen(
-                  questions: QuestionRepository.getQuestions(
-                      category, QuestionRepository.trainingBatchSize),
-                  category: category,
-                  isSimulation: false)),
+              onPressed: () => Get.off(TrainingMenu.getShuffle(category)),
               child: const Text('Continue with shuffle'),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Get.off(QuizScreen(
-                  questions: QuestionRepository.getFreshQuestions(
-                      category, QuestionRepository.trainingBatchSize),
-                  category: category,
-                  isSimulation: false)),
+              onPressed: () => Get.off(TrainingMenu.getFresh(category)),
               child: const Text('Continue with fresh'),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Get.off(QuizScreen(
-                  questions: QuestionRepository.getFailedQuestions(
-                      category, QuestionRepository.trainingBatchSize),
-                  category: category,
-                  isSimulation: false)),
+              onPressed: () => Get.off(TrainingMenu.getFailed(category)),
               child: const Text('Continue with failed'),
             ),
           ],

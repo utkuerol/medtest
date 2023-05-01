@@ -1,6 +1,9 @@
+import 'package:flutter/services.dart';
 import 'package:medtest/logic/model/category.dart';
+import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
-import 'package:medtest/repository/mock_data.dart';
+import 'package:medtest/logic/model/textmultiplechoice_question.dart';
+import 'dart:convert';
 
 class QuestionRepository {
   static const int trainingBatchSize = 10;
@@ -15,7 +18,7 @@ class QuestionRepository {
   static const int simulationCategoryIBatchSize = 5;
 
   // gets simulation question catalog for category
-  static List<Question> getSimulationQuestions(String category) {
+  static Future<List<Question>> getSimulationQuestions(String category) async {
     List<Question> questions = [];
     int batchSize = 0;
     switch (category) {
@@ -48,36 +51,114 @@ class QuestionRepository {
         break;
       default:
     }
-    for (int i = 0; i < batchSize; i++) {
-      questions.add(MockData.textMultipleChoiceQuestion);
-    }
+    questions = await getQuestions(category, batchSize);
     return questions;
   }
 
   // gets n questions randomly from the given category
-  static List<Question> getQuestions(String category, int n) {
+  static Future<List<Question>> getQuestions(String category, int n) async {
+    final String jsonString =
+        await rootBundle.loadString('assets/data/$category.json');
+    final jsonData = json.decode(jsonString);
+    if (jsonData.length < n) {
+      n = jsonData.length;
+    }
+    jsonData.shuffle();
+    List<dynamic> randomQuestions = jsonData.sublist(0, n);
     List<Question> questions = [];
-    for (int i = 0; i < trainingBatchSize; i++) {
-      questions.add(MockData.textMultipleChoiceQuestion);
+    if (Category.textMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String questionText = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(TextMultipleChoiceQuestion(
+            id, category, questionText, choices, correctAnswerIndex));
+      }
+    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String question = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(ImageMultipleChoiceQuestion(
+            id, category, question, choices, correctAnswerIndex));
+      }
     }
     return questions;
   }
 
   // gets n unseen questions randomly from the given category
-  static List<Question> getFreshQuestions(String category, int n) {
-    List<Question> questions = [];
-    for (int i = 0; i < trainingBatchSize; i++) {
-      questions.add(MockData.textMultipleChoiceQuestion);
+  static Future<List<Question>> getFreshQuestions(
+      String category, int n) async {
+    final String jsonString =
+        await rootBundle.loadString('assets/data/$category.json');
+    var jsonData = json.decode(jsonString);
+    jsonData.shuffle();
+    jsonData = jsonData.where((json) => json['trained'] == false);
+    if (jsonData.length < n) {
+      n = jsonData.length;
     }
+    final List<dynamic> randomQuestions = jsonData.sublist(0, n);
+
+    final List<Question> questions = [];
+    if (Category.textMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String questionText = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(TextMultipleChoiceQuestion(
+            id, category, questionText, choices, correctAnswerIndex));
+      }
+    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String question = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(ImageMultipleChoiceQuestion(
+            id, category, question, choices, correctAnswerIndex));
+      }
+    }
+
     return questions;
   }
 
   // gets n previously failed questions randomly from the given category
-  static List<Question> getFailedQuestions(String category, int n) {
-    List<Question> questions = [];
-    for (int i = 0; i < trainingBatchSize; i++) {
-      questions.add(MockData.textMultipleChoiceQuestion);
+  static Future<List<Question>> getFailedQuestions(
+      String category, int n) async {
+    final String jsonString =
+        await rootBundle.loadString('assets/data/$category.json');
+    var jsonData = json.decode(jsonString);
+    jsonData.shuffle();
+    jsonData = jsonData.where((json) => json['answeredCorrectly'] == false);
+    if (jsonData.length < n) {
+      n = jsonData.length;
     }
+    final List<dynamic> randomQuestions = jsonData.sublist(0, n);
+
+    final List<Question> questions = [];
+    if (Category.textMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String questionText = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(TextMultipleChoiceQuestion(
+            id, category, questionText, choices, correctAnswerIndex));
+      }
+    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
+      for (var questionData in randomQuestions) {
+        final int id = questionData['id'];
+        final String question = questionData['question'];
+        final List<String> choices = List<String>.from(questionData['choices']);
+        final int correctAnswerIndex = questionData['answer'];
+        questions.add(ImageMultipleChoiceQuestion(
+            id, category, question, choices, correctAnswerIndex));
+      }
+    }
+
     return questions;
   }
 }

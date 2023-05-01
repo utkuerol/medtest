@@ -20,4 +20,14 @@ class Category {
     categoryH,
     categoryI
   ];
+
+  static const List<String> textMultipleChoiceCategories = [
+    categoryB,
+    categoryD
+  ];
+
+  static const List<String> imageMultipleChoiceCategories = [
+    categoryA,
+    categoryC
+  ];
 }

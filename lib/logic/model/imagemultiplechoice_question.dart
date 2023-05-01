@@ -1,11 +1,11 @@
 import 'package:medtest/logic/model/question.dart';
 
-class TextMultipleChoiceQuestion extends Question {
+class ImageMultipleChoiceQuestion extends Question {
   final String question;
   final List<String> choices;
   final int answer;
 
-  TextMultipleChoiceQuestion(
+  ImageMultipleChoiceQuestion(
       int id, String category, this.question, this.choices, this.answer)
       : super(id, category) {
     // Check if answer index is within the range of the choices array

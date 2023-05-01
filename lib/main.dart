@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           colorScheme: const ColorScheme.light()
               .copyWith(primary: Colors.black, secondary: Colors.white)),
-      home: Home(),
+      home: const Home(),
     );
   }
 }

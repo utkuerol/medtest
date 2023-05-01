@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "question": "Ein Forscherteam untersucht die Pharmakokinetik eines Medikaments, das in Tablettenform verabreicht wird. Nach der Einnahme erreicht das Medikament innerhalb von 30 Minuten seine maximale Konzentration im Blutplasma. Die Halbwertszeit des Medikaments beträgt 4 Stunden. Die Forscher stellen fest, dass das Medikament bei einer Dosis von 200 mg eine therapeutische Konzentration von 5 μg/ml erreicht. Wie viel beträgt die Konzentration des Medikaments im Blutplasma 8 Stunden nach der Einnahme der Tablette?",
+        "choices": [
+            "1,25 μg/ml",
+            "2,5 μg/ml",
+            "3,75 μg/ml",
+            "4,5 μg/ml",
+            "5,0 μg/ml"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 2,
+        "question": "In einer Studie wird das Wachstum von Zellen unter verschiedenen Bedingungen untersucht. Die Forscher entnehmen alle 24 Stunden Proben und zählen die Zellen. An Tag 1 zählen sie 100 Zellen, an Tag 2 zählen sie 150 Zellen und an Tag 3 zählen sie 225 Zellen. Angenommen, das Wachstum der Zellen folgt einer exponentiellen Funktion. Wie viele Zellen werden die Forscher voraussichtlich an Tag 5 zählen?",
+        "choices": [
+            "337,5 Zellen",
+            "450 Zellen",
+            "506,25 Zellen",
+            "675 Zellen",
+            "844,5 Zellen"
+        ],
+        "answer": 4
+    },
+    {
+        "id": 3,
+        "question": "In einem Experiment wird die Geschwindigkeit von Enzymen bei verschiedenen Temperaturen untersucht. Es wird festgestellt, dass die Enzymaktivität bei 30 °C und bei 70 °C jeweils 50% der maximalen Aktivität beträgt. Angenommen, die Enzymaktivität folgt der Arrhenius-Gleichung. Bei welcher Temperatur ist die Enzymaktivität voraussichtlich am höchsten?",
+        "choices": [
+            "40 °C",
+            "50 °C",
+            "60 °C",
+            "80 °C",
+            "90 °C"
+        ],
+        "answer": 1
+    },
+    {
+        "id": 4,
+        "question": "Ein Biophysiker untersucht die Struktur eines Proteins und stellt fest, dass es aus 25% Alpha-Helices, 20% Beta-Faltblättern und 55% ungeordneten Schleifen besteht. Wenn das Protein aus 1000 Aminosäuren besteht, wie viele Aminosäuren sind wahrscheinlich in ungeordneten Schleifenstrukturen vorhanden?",
+        "choices": [
+            "250 Aminosäuren",
+            "300 Aminosäuren",
+            "500 Aminosäuren",
+            "550 Aminosäuren",
+            "600 Aminosäuren"
+        ],
+        "answer": 3
+    }
+]

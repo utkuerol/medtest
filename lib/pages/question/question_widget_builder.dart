@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/logic/model/question_type.dart';
 import 'package:medtest/logic/model/textmultiplechoice_question.dart';
+import 'package:medtest/pages/question/imageMultipleChoice_widget.dart';
 import 'package:medtest/pages/question/textmultiplechoice_widget.dart';
 
 class QuestionWidgetBuilder {
@@ -16,7 +18,12 @@ class QuestionWidgetBuilder {
           isSimulation: isSimulation,
         );
       case QuestionType.imageMultipleChoice:
-        return const Placeholder();
+        final imageQuestion = question as ImageMultipleChoiceQuestion;
+        return ImageMultipleChoiceQuestionWidget(
+          question: imageQuestion,
+          onNextQuestion: onNextQuestion,
+          isSimulation: isSimulation,
+        );
       case QuestionType.concentrationMatrix:
         return const Placeholder();
       default:

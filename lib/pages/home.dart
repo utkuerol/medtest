@@ -4,6 +4,8 @@ import 'package:medtest/pages/training_menu.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(context) => Scaffold(
         appBar: AppBar(title: const Text("MedTest")),
@@ -65,7 +67,7 @@ class Home extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(15),
                 child: ElevatedButton(
-                  onPressed: () => Get.off(TrainingMenu()),
+                  onPressed: () => Get.off(() => TrainingMenu()),
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     child: Text(
