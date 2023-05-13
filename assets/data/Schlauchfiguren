@@ -1,7 +1,7 @@
 [
     {
         "id": 26,
-        "question": "assets/data/images/26_question.png", "assets/data/images/27_question.png,
+        "question": "assets/data/images/26_1_question.png", "assets/data/images/26_2_question.png,
         "choices": [
             "r",
             "l",
