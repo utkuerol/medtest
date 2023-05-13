@@ -30,23 +30,23 @@ III. Eine Operation kann in einigen Fällen erforderlich sein.",
       "answer": 0
     },
     {
-      "question": "",
-      "choices": [""],
+      "question": "Welche der folgenden Aussagen über die Diagnose von CED ist/sind korrekt?",
+      "choices": ["Nur Aussage II ist korrekt", "Nur Aussagen I und III sind korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage I ist korrekt"],
       "answer": 0
     },
     {
-      "question": "",
-      "choices": [""],
+      "question": "Welche der folgenden Aussagen über die Rolle der Ernährung bei CED ist/sind korrekt?",
+      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussagen II und III sind korrekt", "Nur Aussage I ist korrekt", "Alle Aussagen sind korrekt", "Nur Aussage II ist korrekt"],
       "answer": 0
     },
     {
-      "question": "",
-      "choices": [""],
+      "question": "Welche der folgenden Aussagen über die Symptome von CED ist/sind korrekt?",
+      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussage II ist korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage III ist korrekt"],
       "answer": 0
     },
     {
-      "question": "",
-      "choices": [""],
+      "question": "Welche der folgenden Aussagen über Komplikationen bei CED ist/sind korrekt?",
+      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussage II ist korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage III ist korrekt"],
       "answer": 0
     },    
 ]
