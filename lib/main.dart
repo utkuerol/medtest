@@ -15,13 +15,15 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'MedTest',
       theme: ThemeData(
-        colorScheme: const ColorScheme.light()
-            .copyWith(primary: Colors.blue[800], secondary: Colors.white),  // Change primary color to dark blue
+        colorScheme: const ColorScheme.light().copyWith(
+            primary: Colors.blue[800],
+            secondary: Colors.white), // Change primary color to dark blue
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.blue[800]),  // Change ElevatedButton background color to dark blue
+            backgroundColor: MaterialStateProperty.all(Colors.blue[
+                800]), // Change ElevatedButton background color to dark blue
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),  // Round corners
+              borderRadius: BorderRadius.circular(10), // Round corners
             )),
           ),
         ),
