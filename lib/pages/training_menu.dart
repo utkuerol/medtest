@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:medtest/logic/model/category.dart';
+import 'package:medtest/logic/model/longtextmultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/pages/home.dart';
 import 'package:medtest/pages/quiz.dart';
@@ -89,11 +90,21 @@ class TrainingMenu extends StatelessWidget {
       future: QuestionRepository.getSimulationQuestions(category),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
         if (snapshot.hasData) {
-          return QuizScreen(
-            category: category,
-            questions: snapshot.data!,
-            isSimulation: true,
-          );
+          if (category == Category.categoryF) {
+            return QuizScreen(
+              category: category,
+              questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
+                  .questions,
+              isSimulation: false,
+              intro: (snapshot.data![0] as LongTextMultipleChoiceQuestion).text,
+            );
+          } else {
+            return QuizScreen(
+              category: category,
+              questions: snapshot.data!,
+              isSimulation: true,
+            );
+          }
         } else if (snapshot.hasError) {
           return const Text('Error loading simulation questions.');
         } else {
@@ -115,11 +126,21 @@ class TrainingMenu extends StatelessWidget {
           return Center(child: Text('Error: ${snapshot.error}'));
         }
         if (snapshot.hasData) {
-          return QuizScreen(
-            category: category,
-            questions: snapshot.data!,
-            isSimulation: false,
-          );
+          if (category == Category.categoryF) {
+            return QuizScreen(
+              category: category,
+              questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
+                  .questions,
+              isSimulation: false,
+              intro: (snapshot.data![0] as LongTextMultipleChoiceQuestion).text,
+            );
+          } else {
+            return QuizScreen(
+              category: category,
+              questions: snapshot.data!,
+              isSimulation: false,
+            );
+          }
         }
         return Center(child: Text('No data available'));
       },
@@ -132,11 +153,21 @@ class TrainingMenu extends StatelessWidget {
           category, QuestionRepository.trainingBatchSize),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return QuizScreen(
-            category: category,
-            questions: snapshot.data!,
-            isSimulation: false,
-          );
+          if (category == Category.categoryF) {
+            return QuizScreen(
+              category: category,
+              questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
+                  .questions,
+              isSimulation: false,
+              intro: (snapshot.data![0] as LongTextMultipleChoiceQuestion).text,
+            );
+          } else {
+            return QuizScreen(
+              category: category,
+              questions: snapshot.data!,
+              isSimulation: false,
+            );
+          }
         } else if (snapshot.hasError) {
           return Center(child: Text("Error loading questions."));
         } else {
@@ -154,11 +185,21 @@ class TrainingMenu extends StatelessWidget {
       ),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
         if (snapshot.hasData) {
-          return QuizScreen(
-            category: category,
-            questions: snapshot.data!,
-            isSimulation: false,
-          );
+          if (category == Category.categoryF) {
+            return QuizScreen(
+              category: category,
+              questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
+                  .questions,
+              isSimulation: false,
+              intro: (snapshot.data![0] as LongTextMultipleChoiceQuestion).text,
+            );
+          } else {
+            return QuizScreen(
+              category: category,
+              questions: snapshot.data!,
+              isSimulation: false,
+            );
+          }
         } else if (snapshot.hasError) {
           return Center(
             child: Text(

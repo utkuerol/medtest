@@ -24,6 +24,13 @@ class QuestionWidgetBuilder {
           onNextQuestion: onNextQuestion,
           isSimulation: isSimulation,
         );
+      case QuestionType.longTextMultipleChoice:
+        final textQuestion = question as TextMultipleChoiceQuestion;
+        return TextMultipleChoiceQuestionWidget(
+          question: textQuestion,
+          onNextQuestion: onNextQuestion,
+          isSimulation: isSimulation,
+        );
       case QuestionType.concentrationMatrix:
         return const Placeholder();
       default:

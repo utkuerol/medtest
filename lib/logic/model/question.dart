@@ -15,6 +15,8 @@ class Question {
       type = QuestionType.textMultipleChoice;
     } else if (Category.imageMultipleChoiceCategories.contains(category)) {
       type = QuestionType.imageMultipleChoice;
+    } else if (Category.longTextMultipleChoiceCategories.contains(category)) {
+      type = QuestionType.longTextMultipleChoice;
     } else {
       throw ArgumentError('Invalid category');
     }
