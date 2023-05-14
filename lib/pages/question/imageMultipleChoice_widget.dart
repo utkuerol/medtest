@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
 import 'package:medtest/pages/question/question_widget.dart';
-import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 
 class ImageMultipleChoiceQuestionWidget extends QuestionWidget {
   final int? selectedIndex;
@@ -45,8 +44,9 @@ class ImageMultipleChoiceQuestionWidgetState
   @override
   Widget build(BuildContext context) {
     final choices = (widget.question as ImageMultipleChoiceQuestion).choices;
+    // TODO handle multiple question images
     final questionImage = Image.asset(
-      (widget.question as ImageMultipleChoiceQuestion).question,
+      (widget.question as ImageMultipleChoiceQuestion).questionImages[0],
       fit: BoxFit.contain,
     );
 

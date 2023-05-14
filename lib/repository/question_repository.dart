@@ -46,9 +46,6 @@ class QuestionRepository {
       case Category.categoryH:
         batchSize = simulationCategoryHBatchSize;
         break;
-      case Category.categoryI:
-        batchSize = simulationCategoryIBatchSize;
-        break;
       default:
     }
     questions = await getQuestions(category, batchSize);
@@ -65,26 +62,10 @@ class QuestionRepository {
     }
     jsonData.shuffle();
     List<dynamic> randomQuestions = jsonData.sublist(0, n);
-    List<Question> questions = [];
-    if (Category.textMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
-        final int id = questionData['id'];
-        final String questionText = questionData['question'];
-        final List<String> choices = List<String>.from(questionData['choices']);
-        final int correctAnswerIndex = questionData['answer'];
-        questions.add(TextMultipleChoiceQuestion(
-            id, category, questionText, choices, correctAnswerIndex));
-      }
-    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
-        final int id = questionData['id'];
-        final String question = questionData['question'];
-        final List<String> choices = List<String>.from(questionData['choices']);
-        final int correctAnswerIndex = questionData['answer'];
-        questions.add(ImageMultipleChoiceQuestion(
-            id, category, question, choices, correctAnswerIndex));
-      }
-    }
+    final List<Question> questions = _createQuestionsFromJsonData(
+      randomQuestions,
+      category,
+    );
     return questions;
   }
 
@@ -101,26 +82,10 @@ class QuestionRepository {
     }
     final List<dynamic> randomQuestions = jsonData.sublist(0, n);
 
-    final List<Question> questions = [];
-    if (Category.textMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
-        final int id = questionData['id'];
-        final String questionText = questionData['question'];
-        final List<String> choices = List<String>.from(questionData['choices']);
-        final int correctAnswerIndex = questionData['answer'];
-        questions.add(TextMultipleChoiceQuestion(
-            id, category, questionText, choices, correctAnswerIndex));
-      }
-    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
-        final int id = questionData['id'];
-        final String question = questionData['question'];
-        final List<String> choices = List<String>.from(questionData['choices']);
-        final int correctAnswerIndex = questionData['answer'];
-        questions.add(ImageMultipleChoiceQuestion(
-            id, category, question, choices, correctAnswerIndex));
-      }
-    }
+    final List<Question> questions = _createQuestionsFromJsonData(
+      randomQuestions,
+      category,
+    );
 
     return questions;
   }
@@ -138,27 +103,47 @@ class QuestionRepository {
     }
     final List<dynamic> randomQuestions = jsonData.sublist(0, n);
 
+    final List<Question> questions = _createQuestionsFromJsonData(
+      randomQuestions,
+      category,
+    );
+
+    return questions;
+  }
+
+  static List<Question> _createQuestionsFromJsonData(
+    List<dynamic> jsonData,
+    String category,
+  ) {
     final List<Question> questions = [];
     if (Category.textMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
+      for (var questionData in jsonData) {
         final int id = questionData['id'];
         final String questionText = questionData['question'];
         final List<String> choices = List<String>.from(questionData['choices']);
         final int correctAnswerIndex = questionData['answer'];
-        questions.add(TextMultipleChoiceQuestion(
-            id, category, questionText, choices, correctAnswerIndex));
+        final question = TextMultipleChoiceQuestion(
+          id,
+          category,
+          questionText,
+          choices,
+          correctAnswerIndex,
+        );
+        questions.add(question);
       }
     } else if (Category.imageMultipleChoiceCategories.contains(category)) {
-      for (var questionData in randomQuestions) {
+      for (var questionData in jsonData) {
         final int id = questionData['id'];
-        final String question = questionData['question'];
+        final String questionText = questionData['question_text'];
+        final List<String> questionImages =
+            List<String>.from(questionData['question_images']);
         final List<String> choices = List<String>.from(questionData['choices']);
         final int correctAnswerIndex = questionData['answer'];
-        questions.add(ImageMultipleChoiceQuestion(
-            id, category, question, choices, correctAnswerIndex));
+        final question = ImageMultipleChoiceQuestion(id, category, questionText,
+            questionImages, choices, correctAnswerIndex);
+        questions.add(question);
       }
     }
-
     return questions;
   }
 }

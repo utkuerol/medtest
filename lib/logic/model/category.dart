@@ -4,10 +4,13 @@ class Category {
   static const String categoryC = "Schlauchfiguren";
   static const String categoryD = "Quantitative und formale Probleme";
   static const String categoryE = "Figuren/Fakten";
+  static const String categoryE1 = "Figuren";
+  static const String categoryE2 = "Fakten";
   static const String categoryF = "Textverständnis";
-  static const String categoryG = "Reproduktionsphase";
-  static const String categoryH = "Diagramme und Tabellen";
-  static const String categoryI = "Konzentration und sorgfältiges Arbeiten";
+  static const String categoryG = "Diagramme und Tabellen";
+  static const String categoryH = "Konzentration und sorgfältiges Arbeiten";
+  static const String categoryH1 = "numerisch";
+  static const String categoryH2 = "alphabetisch";
 
   static const List<String> validCategories = [
     categoryA,
@@ -18,7 +21,6 @@ class Category {
     categoryF,
     categoryG,
     categoryH,
-    categoryI
   ];
 
   static const List<String> textMultipleChoiceCategories = [
@@ -28,6 +30,20 @@ class Category {
 
   static const List<String> imageMultipleChoiceCategories = [
     categoryA,
-    categoryC
+  ];
+
+  static const List<String> imageQuestionTextMultipleChoiceCategories = [
+    categoryC,
+    categoryG
+  ];
+
+  static const List<String> longTextMultipleChoiceCategories = [
+    categoryF,
+  ];
+
+  static const List<String> concentrationMatrix = [
+    categoryH,
+    categoryH1,
+    categoryH2
   ];
 }
