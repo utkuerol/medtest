@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medtest/logic/model/category.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/pages/home.dart';
@@ -22,12 +23,12 @@ class TrainingMenu extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 24),
               child: Text(
                 "Kategorien",
                 style: Theme.of(context).textTheme.headlineLarge,
@@ -35,44 +36,51 @@ class TrainingMenu extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: 2.5,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                padding: const EdgeInsets.all(16),
+              child: ListView(
+                padding: const EdgeInsets.all(36),
                 children: Category.validCategories.map((category) {
-                  return ElevatedButton(
-                    onPressed: () => showDialog(
-                      context: context,
-                      builder: (context) {
-                        return SimpleDialog(
-                          title: const Text(
-                              'Wie möchtest du diese Kategorie üben?'),
-                          children: <Widget>[
-                            SimpleDialogOption(
-                              onPressed: () => Get.off(getSimulation(category)),
-                              child: const Text('Simulation'),
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: ElevatedButton(
+                      onPressed: () => showDialog(
+                        context: context,
+                        builder: (context) {
+                          return SimpleDialog(
+                            title: Text(
+                              'Wie möchtest du diese Kategorie üben?',
+                              style: TextStyle(color: Colors.blue[800]),
                             ),
-                            SimpleDialogOption(
-                              onPressed: () => Get.off(getShuffle(category)),
-                              child: const Text('Shuffle'),
-                            ),
-                            SimpleDialogOption(
-                              onPressed: () => Get.off(getFailed(category)),
-                              child: const Text('Zuletzt falsch'),
-                            ),
-                            SimpleDialogOption(
-                              onPressed: () => Get.off(getFresh(category)),
-                              child: const Text('Frisch'),
-                            ),
-                          ],
-                        );
-                      },
-                    ),
-                    child: Text(
-                      category,
-                      style: const TextStyle(fontSize: 16),
+                            children: <Widget>[
+                              SimpleDialogOption(
+                                onPressed: () => Get.off(getSimulation(category)),
+                                child: const Text('Simulation'),
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () => Get.off(getShuffle(category)),
+                                child: const Text('Shuffle'),
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () => Get.off(getFailed(category)),
+                                child: const Text('Zuletzt falsch'),
+                              ),
+                              SimpleDialogOption(
+                                onPressed: () => Get.off(getFresh(category)),
+                                child: const Text('Frisch'),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                      child: Text(
+                        category,
+                        style: GoogleFonts.roboto(fontSize: 20, color: Colors.white),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blue[800]),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        )),
+                      ),
                     ),
                   );
                 }).toList(),
@@ -84,7 +92,7 @@ class TrainingMenu extends StatelessWidget {
     );
   }
 
-  Widget getSimulation(String category) {
+Widget getSimulation(String category) {
     return FutureBuilder<List<Question>>(
       future: QuestionRepository.getSimulationQuestions(category),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
