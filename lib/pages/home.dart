@@ -84,7 +84,7 @@ class Home extends StatelessWidget {
                   child: const Padding(
                     padding: EdgeInsets.symmetric(vertical: 16),
                     child: Text(
-                      'Statistik',
+                      'Tipps und Tricks',
                       style: TextStyle(fontSize: 30),
                     ),
                   ),
