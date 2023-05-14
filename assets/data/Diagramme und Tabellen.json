@@ -1,12 +1,17 @@
 [
     {
         "id": 27,
-        "question": "assets/data/images/27_question.png",
-        "Welche Aussagen kann man nicht aus der Tabelle ableiten?
-        I. Die Einwohner der Tschechischen Republik verdienen am wenigsten Geld durch Online-Verkäufe.
-        II. Die Schweizer Bevölkerung gibt viel mehr Geld für Online-Einkäufe aus, als sie durch die Verkäufe verdient.
-        III. Nahezu 30% der italienischen Bevölkerung kaufen online ein.",
-        "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussagen II und III sind korrekt", "Nur Aussage III ist korrekt", "Alle Aussagen sind korrekt", "Nur Aussage II ist korrekt"],
+        "question_images": [
+            "assets/data/images/27_question.png"
+        ],
+        "question_text": "Welche Aussagen kann man nicht aus der Tabelle ableiten?\nI. Die Einwohner der Tschechischen Republik verdienen am wenigsten Geld durch Online-Verkäufe. \n II. Die Schweizer Bevölkerung gibt viel mehr Geld für Online-Einkäufe aus, als sie durch die Verkäufe verdient.\nIII. Nahezu 30% der italienischen Bevölkerung kaufen online ein.",
+        "choices": [
+            "Nur Aussagen I und III sind korrekt",
+            "Nur Aussagen II und III sind korrekt",
+            "Nur Aussage III ist korrekt",
+            "Alle Aussagen sind korrekt",
+            "Nur Aussage II ist korrekt"
+        ],
         "answer": "2"
     }
 ]

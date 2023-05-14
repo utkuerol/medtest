@@ -1,7 +1,11 @@
 [
     {
         "id": 26,
-        "question": "assets/data/images/26_1_question.png", "assets/data/images/26_2_question.png,
+        "question_images": [
+            "assets/data/images/26_1_question.png",
+            "assets/data/images/26_2_question.png"
+        ],
+        "question_text": "",
         "choices": [
             "r",
             "l",
@@ -9,6 +13,6 @@
             "o",
             "h"
         ],
-        "answer": h
+        "answer": 4
     }
 ]

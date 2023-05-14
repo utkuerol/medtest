@@ -1,7 +1,10 @@
 [
     {
         "id": 25,
-        "question": "assets/data/images/25_question.png",
+        "question_images": [
+            "assets/data/images/25_question.png"
+        ],
+        "question_text": "",
         "choices": [
             "assets/data/images/25_0.png",
             "assets/data/images/25_1.png",

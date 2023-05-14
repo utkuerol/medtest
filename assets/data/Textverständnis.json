@@ -1,52 +1,14 @@
 [
-    {
-        "id": 1,
-        "text": "Chronisch-entzündliche Darmerkrankungen (CED) sind eine Gruppe von Erkrankungen, die durch eine anhaltende und wiederkehrende Entzündung des Gastrointestinaltrakts gekennzeichnet sind. Die beiden Haupttypen von CED sind Morbus Crohn und Colitis ulcerosa. Diese Erkrankungen können erhebliche Schmerzen und Unbehagen verursachen und die Lebensqualität der Betroffenen beeinträchtigen. Morbus Crohn ist eine CED, die jeden Teil des Verdauungstrakts betreffen kann, am häufigsten jedoch den unteren Teil des Dünndarms (Ileum) und den Anfang des Dickdarms (Zökum). Die Entzündung bei Morbus Crohn betrifft alle Schichten der Darmwand und kann zu Symptomen wie Durchfall, Bauchschmerzen, Müdigkeit und Gewichtsverlust führen. In schweren Fällen können Komplikationen wie Fisteln, Abszesse und Darmverschluss auftreten. Die genaue Ursache von Morbus Crohn ist unbekannt, aber es wird angenommen, dass eine Kombination aus genetischen, immunologischen und Umweltfaktoren dazu beiträgt.
-
-Colitis ulcerosa ist eine weitere Form von CED, die nur den Dickdarm betrifft. Im Gegensatz zu Morbus Crohn, der alle Schichten der Darmwand betreffen kann, beschränkt sich die Entzündung bei Colitis ulcerosa auf die innere Schicht der Darmschleimhaut. Die Symptome von Colitis ulcerosa ähneln denen von Morbus Crohn, können aber zusätzlich blutigen Stuhl und starken Drang zum Stuhlgang beinhalten. Colitis ulcerosa kann in verschiedene Schweregrade eingeteilt werden, von leicht bis schwer, und wird in der Regel mit entzündungshemmenden Medikamenten, Immunmodulatoren und gegebenenfalls Biologika behandelt.
-
-Die Diagnose von CED basiert auf einer Kombination aus klinischen Symptomen, Laboruntersuchungen, bildgebenden Verfahren und endoskopischen Befunden. Eine Darmspiegelung (Koloskopie) ist häufig der entscheidende Schritt zur Diagnosestellung und kann auch zur Entnahme von Gewebeproben für eine histopathologische Untersuchung genutzt werden.
-
-Die Behandlung von CED zielt darauf ab, die Entzündung zu kontrollieren, Symptome zu lindern und das Risiko von Komplikationen zu reduzieren. Medikamente, die häufig zur Behandlung von CED eingesetzt werden, umfassen entzündungshemmende Medikamente (wie 5-Aminosalicylsäure), Kortikosteroide, Immunmodulatoren (wie Azathioprin) und Biologika (wie Infliximab). In einigen Fällen kann eine Operation erforderlich sein, um betroffene Darmabschnitte zu entfernen oder Komplikationen wie Abszesse und Fisteln zu behandeln.
-
-Die Ernährung spielt eine wichtige Rolle bei der Behandlung und dem Management von CED. Eine ausgewogene Ernährung kann dazu beitragen, den Nährstoffbedarf zu decken und Mangelzustände zu vermeiden, die aufgrund von Durchfall und Malabsorption auftreten können. Spezifische diätetische Empfehlungen können von Person zu Person variieren und sollten in Absprache mit einem Arzt oder Ernährungsberater festgelegt werden. In einigen Fällen kann eine enteral oder parenteral verabreichte Ernährung notwendig sein.
-
-CED sind komplexe Erkrankungen, die eine sorgfältige Diagnose und ein individuelles Management erfordern. Mit der richtigen Behandlung und Unterstützung können die meisten Menschen mit CED ein erfülltes und gesundes Leben führen."
-        "questions": [
-    {
-      "question": "Welche der folgenden Aussagen über CED ist/sind korrekt?
-I. Morbus Crohn kann jeden Teil des Verdauungstrakts betreffen.
-II. Colitis ulcerosa betrifft alle Schichten der Darmwand.
-III. Die genaue Ursache von Morbus Crohn ist bekannt.",
-      "choices": ["Nur I ist korrekt","Nur II und III sind korrekt","Nur I und II sind korrekt","Alle Aussagen sind korrekt","Keine der Aussagen ist korrekt"],
-      "answer": 0
-    },
-    {
-      "question": "Welche der folgenden Aussagen über die Behandlung von CED ist/sind korrekt?
-I. Die Behandlung von CED zielt darauf ab, die Entzündung zu kontrollieren.
-II. Antibiotika sind die erste Wahl zur Behandlung von CED.
-III. Eine Operation kann in einigen Fällen erforderlich sein.",
-      "choices": ["Nur I und III sind korrekt","Nur II ist korrekt","Nur I und II sind korrekt","Alle Aussagen sind korrekt","Nur III ist korrekt"],
-      "answer": 0
-    },
-    {
-      "question": "Welche der folgenden Aussagen über die Diagnose von CED ist/sind korrekt?",
-      "choices": ["Nur Aussage II ist korrekt", "Nur Aussagen I und III sind korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage I ist korrekt"],
-      "answer": 0
-    },
-    {
-      "question": "Welche der folgenden Aussagen über die Rolle der Ernährung bei CED ist/sind korrekt?",
-      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussagen II und III sind korrekt", "Nur Aussage I ist korrekt", "Alle Aussagen sind korrekt", "Nur Aussage II ist korrekt"],
-      "answer": 0
-    },
-    {
-      "question": "Welche der folgenden Aussagen über die Symptome von CED ist/sind korrekt?",
-      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussage II ist korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage III ist korrekt"],
-      "answer": 0
-    },
-    {
-      "question": "Welche der folgenden Aussagen über Komplikationen bei CED ist/sind korrekt?",
-      "choices": ["Nur Aussagen I und III sind korrekt", "Nur Aussage II ist korrekt", "Nur Aussagen I und II sind korrekt", "Alle Aussagen sind korrekt", "Nur Aussage III ist korrekt"],
-      "answer": 0
-    },    
+  {
+    "id": 1,
+    "text": "Chronisch-entzündliche Darmerkrankungen (CED) sind eine Gruppe von Erkrankungen, die durch eine anhaltende und wiederkehrende Entzündung des Gastrointestinaltrakts gekennzeichnet sind. Die beiden Haupttypen von CED sind Morbus Crohn und Colitis ulcerosa. Diese Erkrankungen können erhebliche Schmerzen und Unbehagen verursachen und die Lebensqualität der Betroffenen beeinträchtigen. Morbus Crohn ist eine CED, die jeden Teil des Verdauungstrakts betreffen kann, am häufigsten jedoch den unteren Teil des Dünndarms (Ileum) und den Anfang des Dickdarms (Zökum). Die Entzündung bei Morbus Crohn betrifft alle Schichten der Darmwand und kann zu Symptomen wie Durchfall, Bauchschmerzen, Müdigkeit und Gewichtsverlust führen. In schweren Fällen können Komplikationen wie Fisteln, Abszesse und Darmverschluss auftreten. Die genaue Ursache von Morbus Crohn ist unbekannt, aber es wird angenommen, dass eine Kombination aus genetischen, immunologischen und Umweltfaktoren dazu beiträgt. Colitis ulcerosa ist eine weitere Form von CED, die nur den Dickdarm betrifft. Im Gegensatz zu Morbus Crohn, der alle Schichten der Darmwand betreffen kann, beschränkt sich die Entzündung bei Colitis ulcerosa auf die innere Schicht der Darmschleimhaut. Die Symptome von Colitis ulcerosa ähneln denen von Morbus Crohn, können aber zusätzlich blutigen Stuhl und starken Drang zum Stuhlgang beinhalten. Colitis ulcerosa kann in verschiedene Schweregrade eingeteilt werden, von leicht bis schwer, und wird in der Regel mit entzündungshemmenden Medikamenten, Immunmodulatoren und gegebenenfalls Biologika behandelt. Die Diagnose von CED basiert auf einer Kombination aus klinischen Symptomen, Laboruntersuchungen, bildgebenden Verfahren und endoskopischen Befunden. Eine Darmspiegelung (Koloskopie) ist häufig der entscheidende Schritt zur Diagnosestellung und kann auch zur Entnahme von Gewebeproben für eine histopathologische Untersuchung genutzt werden. Die Behandlung von CED zielt darauf ab, die Entzündung zu kontrollieren, Symptome zu lindern und das Risiko von Komplikationen zu reduzieren. Medikamente, die häufig zur Behandlung von CED eingesetzt werden, umfassen entzündungshemmende Medikamente (wie 5-Aminosalicylsäure), Kortikosteroide, Immunmodulatoren (wie Azathioprin) und Biologika (wie Infliximab). In einigen Fällen kann eine Operation erforderlich sein, um betroffene Darmabschnitte zu entfernen oder Komplikationen wie Abszesse und Fisteln zu behandeln. Die Ernährung spielt eine wichtige Rolle bei der Behandlung und dem Management von CED. Eine ausgewogene Ernährung kann dazu beitragen, den Nährstoffbedarf zu decken und Mangelzustände zu vermeiden, die aufgrund von Durchfall und Malabsorption auftreten können. Spezifische diätetische Empfehlungen können von Person zu Person variieren und sollten in Absprache mit einem Arzt oder Ernährungsberater festgelegt werden. In einigen Fällen kann eine enteral oder parenteral verabreichte Ernährung notwendig sein. CED sind komplexe Erkrankungen, die eine sorgfältige Diagnose und ein individuelles Management erfordern. Mit der richtigen Behandlung und Unterstützung können die meisten Menschen mit CED ein erfülltes und gesundes Leben führen.",
+    "choices": [
+      "Nur I ist korrekt",
+      "Nur II und III sind korrekt",
+      "Nur I und II sind korrekt",
+      "Alle Aussagen sind korrekt",
+      "Keine der Aussagen ist korrekt"
+    ],
+    "answer": 0
+  }
 ]
