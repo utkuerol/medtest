@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:medtest/logic/model/category.dart';
 import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
+import 'package:medtest/logic/model/longtextmultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 import 'dart:convert';
@@ -12,7 +13,7 @@ class QuestionRepository {
   static const int simulationCategoryCBatchSize = 5;
   static const int simulationCategoryDBatchSize = 5;
   static const int simulationCategoryEBatchSize = 5;
-  static const int simulationCategoryFBatchSize = 5;
+  static const int simulationCategoryFBatchSize = 1;
   static const int simulationCategoryGBatchSize = 5;
   static const int simulationCategoryHBatchSize = 5;
   static const int simulationCategoryIBatchSize = 5;
@@ -141,6 +142,28 @@ class QuestionRepository {
         final int correctAnswerIndex = questionData['answer'];
         final question = ImageMultipleChoiceQuestion(id, category, questionText,
             questionImages, choices, correctAnswerIndex);
+        questions.add(question);
+      }
+    } else if (Category.longTextMultipleChoiceCategories.contains(category)) {
+      for (var questionData in jsonData) {
+        final int id = questionData['id'];
+        final String text = questionData['text'];
+        final List<TextMultipleChoiceQuestion> subquestions = [];
+        for (var q in questionData['questions']) {
+          final String questionText = q['question'];
+          final List<String> choices = List<String>.from(q['choices']);
+          final int correctAnswerIndex = q['answer'];
+          final subquestion = TextMultipleChoiceQuestion(
+            -1, // TODO
+            category,
+            questionText,
+            choices,
+            correctAnswerIndex,
+          );
+          subquestions.add(subquestion);
+        }
+        final question =
+            LongTextMultipleChoiceQuestion(id, category, text, subquestions);
         questions.add(question);
       }
     }

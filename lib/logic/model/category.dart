@@ -46,4 +46,11 @@ class Category {
     categoryH1,
     categoryH2
   ];
+
+  static const List<String> introAndReproduceCategories = [
+    categoryF,
+    categoryH,
+    categoryH1,
+    categoryH2
+  ];
 }

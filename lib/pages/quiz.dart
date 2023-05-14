@@ -42,6 +42,9 @@ class QuizScreenState extends State<QuizScreen> {
     } else {
       _remainingTime = double.maxFinite.toInt();
     }
+    if (widget.intro != null) {
+      _currentIndex = -1;
+    }
   }
 
   @override
@@ -92,19 +95,34 @@ class QuizScreenState extends State<QuizScreen> {
   }
 
   Widget _buildQuestionScreen() {
+    if (widget.intro != null && _currentIndex == -1) {
+      return SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            _buildIntro(),
+            const Divider(),
+            ElevatedButton(
+              onPressed: () => setState(() {
+                _currentIndex = 0; // Move to the first question
+              }),
+              child: const Text('Continue'),
+            ),
+          ],
+        ),
+      );
+    }
     final currentQuestion = widget.questions[_currentIndex];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         if (widget.isSimulation) buildTimer(),
-        if (widget.intro != null && _currentIndex == 0) ...[
-          _buildIntro(),
-          const Divider(),
-        ],
         Expanded(
           child: QuestionWidgetBuilder.build(
-              currentQuestion, widget.isSimulation,
-              onNextQuestion: _handleNextQuestion),
+            currentQuestion,
+            widget.isSimulation,
+            onNextQuestion: _handleNextQuestion,
+          ),
         ),
       ],
     );
