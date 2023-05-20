@@ -38,7 +38,7 @@ class Category {
   static const List<String> imageQuestionTextMultipleChoiceCategories = [
     categoryC,
     categoryH,
-    CategoryE1
+    categoryE1
   ];
 
   static const List<String> longTextMultipleChoiceCategories = [
