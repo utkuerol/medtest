@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
+import 'package:medtest/logic/model/imagequestiontextmultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/logic/model/question_type.dart';
 import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 import 'package:medtest/pages/question/imageMultipleChoice_widget.dart';
 import 'package:medtest/pages/question/textmultiplechoice_widget.dart';
+
+import 'imageQuestionTextMultipleChoice_widget.dart';
 
 class QuestionWidgetBuilder {
   static Widget build(Question question, bool isSimulation,
@@ -28,6 +31,14 @@ class QuestionWidgetBuilder {
         final textQuestion = question as TextMultipleChoiceQuestion;
         return TextMultipleChoiceQuestionWidget(
           question: textQuestion,
+          onNextQuestion: onNextQuestion,
+          isSimulation: isSimulation,
+        );
+      case QuestionType.imageQuestionTextMultipleChoice:
+        final imageQuestionTextChoiceQuestion =
+            question as ImageQuestionTextMultipleChoiceQuestion;
+        return ImageQuestionTextMultipleChoiceQuestionWidget(
+          question: imageQuestionTextChoiceQuestion,
           onNextQuestion: onNextQuestion,
           isSimulation: isSimulation,
         );

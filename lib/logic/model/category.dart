@@ -3,10 +3,8 @@ class Category {
   static const String categoryB = "Med.-naturwiss. Grundverständnis";
   static const String categoryC = "Schlauchfiguren";
   static const String categoryD = "Quantitative und formale Probleme";
-  static const String categoryE = "Figuren lernen";
-  static const String categoryE1 = "Figuren Wiedergeben";
-  static const String categoryF = "Fakten lernen";
-  static const String categoryF1 = "Fakten Wiedergeben";
+  static const String categoryE = "Figuren";
+  static const String categoryF = "Fakten";
   static const String categoryG = "Textverständnis";
   static const String categoryH = "Diagramme und Tabellen";
   static const String categoryI = "Konzentration und sorgfältiges Arbeiten";
@@ -28,7 +26,6 @@ class Category {
   static const List<String> textMultipleChoiceCategories = [
     categoryB,
     categoryD,
-    categoryF1
   ];
 
   static const List<String> imageMultipleChoiceCategories = [
@@ -38,7 +35,6 @@ class Category {
   static const List<String> imageQuestionTextMultipleChoiceCategories = [
     categoryC,
     categoryH,
-    CategoryE1
   ];
 
   static const List<String> longTextMultipleChoiceCategories = [
@@ -51,10 +47,10 @@ class Category {
     categoryI2
   ];
 
+  // TODO decide if necessary
   static const List<String> introAndReproduceCategories = [
     categoryE,
-    categoryE1,
     categoryF,
-    categoryF1
+    categoryG
   ];
 }

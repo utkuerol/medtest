@@ -74,31 +74,31 @@ class ImageMultipleChoiceQuestionWidgetState
               child: questionImage,
             ),
           ),
-    const Divider(),
+          const Divider(),
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             crossAxisCount: 2,
             children: List.generate(
               choices.length,
-                  (index) {
+              (index) {
                 final choice = choices[index];
                 final isCorrect = index == _correctIndex;
                 final isSelected = _selectedIndex == index;
                 final borderColor = _isAnswered
                     ? isCorrect
-                    ? Colors.green
+                        ? Colors.green
+                        : isSelected
+                            ? Colors.red
+                            : Colors.transparent
                     : isSelected
-                    ? Colors.red
-                    : Colors.transparent
-                    : isSelected
-                    ? Colors.blue
-                    : Colors.transparent;
+                        ? Colors.blue
+                        : Colors.transparent;
                 final borderWidth = _isAnswered
                     ? 5.0
                     : isSelected
-                    ? 5.0
-                    : 2.0;
+                        ? 5.0
+                        : 2.0;
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(

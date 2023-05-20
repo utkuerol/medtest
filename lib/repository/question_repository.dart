@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:medtest/logic/model/category.dart';
 import 'package:medtest/logic/model/imagemultiplechoice_question.dart';
+import 'package:medtest/logic/model/imagequestiontextmultiplechoice_question.dart';
 import 'package:medtest/logic/model/longtextmultiplechoice_question.dart';
 import 'package:medtest/logic/model/question.dart';
 import 'package:medtest/logic/model/textmultiplechoice_question.dart';
@@ -132,7 +133,8 @@ class QuestionRepository {
         );
         questions.add(question);
       }
-    } else if (Category.imageMultipleChoiceCategories.contains(category)) {
+    } else if (Category.imageMultipleChoiceCategories.contains(category) ||
+        Category.imageQuestionTextMultipleChoiceCategories.contains(category)) {
       for (var questionData in jsonData) {
         final int id = questionData['id'];
         final String questionText = questionData['question_text'];
@@ -140,8 +142,14 @@ class QuestionRepository {
             List<String>.from(questionData['question_images']);
         final List<String> choices = List<String>.from(questionData['choices']);
         final int correctAnswerIndex = questionData['answer'];
-        final question = ImageMultipleChoiceQuestion(id, category, questionText,
-            questionImages, choices, correctAnswerIndex);
+        Question question;
+        if (Category.imageMultipleChoiceCategories.contains(category)) {
+          question = ImageMultipleChoiceQuestion(id, category, questionText,
+              questionImages, choices, correctAnswerIndex);
+        } else {
+          question = ImageQuestionTextMultipleChoiceQuestion(id, category,
+              questionText, questionImages, choices, correctAnswerIndex);
+        }
         questions.add(question);
       }
     } else if (Category.longTextMultipleChoiceCategories.contains(category)) {
