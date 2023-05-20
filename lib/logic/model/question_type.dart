@@ -2,5 +2,6 @@ enum QuestionType {
   textMultipleChoice,
   imageMultipleChoice,
   concentrationMatrix,
-  longTextMultipleChoice
+  longTextMultipleChoice,
+  introAndReproduceCategories
 }
