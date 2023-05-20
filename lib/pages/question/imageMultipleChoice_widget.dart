@@ -44,7 +44,7 @@ class ImageMultipleChoiceQuestionWidgetState
   @override
   Widget build(BuildContext context) {
     final choices = (widget.question as ImageMultipleChoiceQuestion).choices;
-
+    // TODO handle multiple question images
     final questionImage = Container(
       decoration: BoxDecoration(
         border: Border.all(
@@ -75,57 +75,63 @@ class ImageMultipleChoiceQuestionWidgetState
             ),
           ),
           const Divider(),
-          GridView.builder(
+          GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            itemCount: 5,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              mainAxisSpacing: 8.0,
-              crossAxisSpacing: 8.0,
-            ),
-            itemBuilder: (context, index) {
-              if (index >= choices.length) {
-                return Container();
-              } else {
+            crossAxisCount: 2,
+            children: List.generate(
+              choices.length,
+              (index) {
                 final choice = choices[index];
-                final isCorrect = choices.indexOf(choice) == _correctIndex;
-                final isSelected = choices.indexOf(choice) == _selectedIndex;
+                final isCorrect = index == _correctIndex;
+                final isSelected = _selectedIndex == index;
                 final borderColor = _isAnswered
                     ? isCorrect
-                    ? Colors.green
+                        ? Colors.green
+                        : isSelected
+                            ? Colors.red
+                            : Colors.transparent
                     : isSelected
-                    ? Colors.red
-                    : Colors.transparent
+                        ? Colors.blue
+                        : Colors.transparent;
+                final borderWidth = _isAnswered
+                    ? 5.0
                     : isSelected
-                    ? Colors.blue
-                    : Colors.transparent;
-                final borderWidth =
-                _isAnswered ? 5.0 : isSelected ? 5.0 : 2.0;
-
-                return GestureDetector(
-                  onTap: _isAnswered
-                      ? null
-                      : () => _onAnswerSelected(choices.indexOf(choice)),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: borderColor,
-                        width: borderWidth,
+                        ? 5.0
+                        : 2.0;
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: _isAnswered ? null : () => _onAnswerSelected(index),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: borderColor,
+                          width: borderWidth,
+                        ),
+                        borderRadius: BorderRadius.circular(8),
                       ),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        choice,
-                        fit: BoxFit.contain,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.black,
+                            width: 5.0,
+                          ),
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.asset(
+                            choice,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 );
-              }
-            },
+              },
+            ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
@@ -155,21 +161,21 @@ class ImageMultipleChoiceQuestionWidgetState
   Widget getTrainingButton() {
     return !_isAnswered
         ? ElevatedButton(
-      onPressed:
-      _selectedIndex == null || _isAnswered ? null : _onAnswered,
-      child: const Text('Antwort prüfen'),
-    )
+            onPressed:
+                _selectedIndex == null || _isAnswered ? null : _onAnswered,
+            child: const Text('Antwort prüfen'),
+          )
         : ElevatedButton(
-      onPressed: () {
-        widget.onNextQuestion(_selectedIndex!, _isCorrect);
-        setState(() {
-          _selectedIndex = null;
-          _isAnswered = false;
-          _isCorrect = false;
-        });
-      },
-      child: const Text('Nächste Frage'),
-    );
+            onPressed: () {
+              widget.onNextQuestion(_selectedIndex!, _isCorrect);
+              setState(() {
+                _selectedIndex = null;
+                _isAnswered = false;
+                _isCorrect = false;
+              });
+            },
+            child: const Text('Nächste Frage'),
+          );
   }
 
   bool checkAnswer() {
