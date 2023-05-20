@@ -78,7 +78,7 @@ class ImageMultipleChoiceQuestionWidgetState
           GridView.count(
             physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
-            crossAxisCount: 2,
+            crossAxisCount: 3,
             children: List.generate(
               choices.length,
               (index) {
@@ -100,7 +100,7 @@ class ImageMultipleChoiceQuestionWidgetState
                         ? 5.0
                         : 2.0;
                 return Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(2.0),
                   child: GestureDetector(
                     onTap: _isAnswered ? null : () => _onAnswerSelected(index),
                     child: Container(
