@@ -3,14 +3,15 @@ class Category {
   static const String categoryB = "Med.-naturwiss. Grundverständnis";
   static const String categoryC = "Schlauchfiguren";
   static const String categoryD = "Quantitative und formale Probleme";
-  static const String categoryE = "Figuren/Fakten";
-  static const String categoryE1 = "Figuren";
-  static const String categoryE2 = "Fakten";
-  static const String categoryF = "Textverständnis";
-  static const String categoryG = "Diagramme und Tabellen";
-  static const String categoryH = "Konzentration und sorgfältiges Arbeiten";
-  static const String categoryH1 = "numerisch";
-  static const String categoryH2 = "alphabetisch";
+  static const String categoryE = "Figuren lernen";
+  static const String categoryE1 = "Figuren Wiedergeben";
+  static const String categoryF = "Fakten lernen";
+  static const String categoryF1 = "Fakten Wiedergeben";
+  static const String categoryG = "Textverständnis";
+  static const String categoryH = "Diagramme und Tabellen";
+  static const String categoryI = "Konzentration und sorgfältiges Arbeiten";
+  static const String categoryI1 = "numerisch";
+  static const String categoryI2 = "alphabetisch";
 
   static const List<String> validCategories = [
     categoryA,
@@ -21,6 +22,7 @@ class Category {
     categoryF,
     categoryG,
     categoryH,
+    categoryI
   ];
 
   static const List<String> textMultipleChoiceCategories = [
@@ -34,23 +36,23 @@ class Category {
 
   static const List<String> imageQuestionTextMultipleChoiceCategories = [
     categoryC,
-    categoryG
+    categoryH
   ];
 
   static const List<String> longTextMultipleChoiceCategories = [
-    categoryF,
+    categoryG,
   ];
 
   static const List<String> concentrationMatrix = [
-    categoryH,
-    categoryH1,
-    categoryH2
+    categoryI,
+    categoryI1,
+    categoryI2
   ];
 
   static const List<String> introAndReproduceCategories = [
+    categoryE,
+    categoryE1,
     categoryF,
-    categoryH,
-    categoryH1,
-    categoryH2
+    categoryF1
   ];
 }
