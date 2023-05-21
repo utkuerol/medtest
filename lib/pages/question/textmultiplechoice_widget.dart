@@ -52,53 +52,57 @@ class TextMultipleChoiceQuestionWidgetState
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: SingleChildScrollView(
-              child: Text(
-                question,
-                style: const TextStyle(fontSize: 18.0),
-              ),
+            child: Text(
+              question,
+              style: const TextStyle(fontSize: 18.0),
             ),
           ),
-          const Divider(),
+          const Divider(
+            thickness: 3,
+          ),
           SizedBox(
-            height: 300,
-            child: ListView.builder(
-              itemCount: choices.length,
-              itemBuilder: (BuildContext context, int index) {
-                final choice = choices[index];
-                final isCorrect = index == _correctIndex;
-                final isSelected = _selectedIndex == index;
-                final color = _isAnswered
-                    ? isCorrect
-                        ? Colors.green
-                        : isSelected
-                            ? Colors.red
-                            : null
-                    : isSelected
-                        ? Colors.blue
-                        : null;
-
-                return RadioListTile<int>(
-                  value: index,
-                  groupValue: _selectedIndex,
-                  onChanged: _isAnswered ? null : _onAnswerSelected,
-                  title: Text(
-                    choice,
-                    style: TextStyle(
-                      color: color,
-                      fontWeight: isSelected ? FontWeight.bold : null,
-                    ),
+              height: 500,
+              child: Column(
+                children: [
+                  ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: choices.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final choice = choices[index];
+                      final isCorrect = index == _correctIndex;
+                      final isSelected = _selectedIndex == index;
+                      final color = _isAnswered
+                          ? isCorrect
+                              ? Colors.green
+                              : isSelected
+                                  ? Colors.red
+                                  : null
+                          : isSelected
+                              ? Colors.blue
+                              : null;
+                      return RadioListTile<int>(
+                        value: index,
+                        groupValue: _selectedIndex,
+                        onChanged: _isAnswered ? null : _onAnswerSelected,
+                        title: Text(
+                          choice,
+                          style: TextStyle(
+                            color: color,
+                            fontWeight: isSelected ? FontWeight.bold : null,
+                          ),
+                        ),
+                        activeColor: color ?? Colors.blue,
+                      );
+                    },
                   ),
-                  activeColor: color ?? Colors.blue,
-                );
-              },
-            ),
-          ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: widget.isSimulation
-                  ? getSimulationButton()
-                  : getTrainingButton())
+                  Align(
+                      alignment: Alignment.bottomCenter,
+                      child: widget.isSimulation
+                          ? getSimulationButton()
+                          : getTrainingButton())
+                ],
+              )),
         ],
       ),
     );

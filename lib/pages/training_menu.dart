@@ -19,7 +19,7 @@ class TrainingMenu extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.home),
-            onPressed: () => Get.off(Home()),
+            onPressed: () => Get.off(const Home()),
           ),
         ],
       ),
@@ -38,49 +38,65 @@ class TrainingMenu extends StatelessWidget {
             ),
             Expanded(
               child: ListView(
-                padding: const EdgeInsets.all(36),
+                padding: const EdgeInsets.only(
+                    left: 36, right: 36, bottom: 36, top: 10),
                 children: Category.validCategories.map((category) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ElevatedButton(
-                      onPressed: () => showDialog(
-                        context: context,
-                        builder: (context) {
-                          return SimpleDialog(
-                            title: Text(
-                              'Wie möchtest du diese Kategorie üben?',
-                              style: TextStyle(color: Colors.blue[800]),
-                            ),
-                            children: <Widget>[
-                              SimpleDialogOption(
-                                onPressed: () => Get.off(getSimulation(category)),
-                                child: const Text('Simulation'),
+                      // TODO activate categories once implemented
+                      onPressed: (category == Category.categoryE ||
+                              category == Category.categoryF ||
+                              category == Category.categoryI)
+                          ? null
+                          : () => showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return SimpleDialog(
+                                    title: Text(
+                                      'Wie möchtest du diese Kategorie üben?',
+                                      style: TextStyle(color: Colors.blue[800]),
+                                    ),
+                                    children: <Widget>[
+                                      SimpleDialogOption(
+                                        onPressed: () =>
+                                            Get.off(getSimulation(category)),
+                                        child: const Text('Simulation'),
+                                      ),
+                                      SimpleDialogOption(
+                                        onPressed: () =>
+                                            Get.off(getShuffle(category)),
+                                        child: const Text('Shuffle'),
+                                      ),
+                                      SimpleDialogOption(
+                                        onPressed: () =>
+                                            Get.off(getFailed(category)),
+                                        child: const Text('Zuletzt falsch'),
+                                      ),
+                                      SimpleDialogOption(
+                                        onPressed: () =>
+                                            Get.off(getFresh(category)),
+                                        child: const Text('Frisch'),
+                                      ),
+                                    ],
+                                  );
+                                },
                               ),
-                              SimpleDialogOption(
-                                onPressed: () => Get.off(getShuffle(category)),
-                                child: const Text('Shuffle'),
-                              ),
-                              SimpleDialogOption(
-                                onPressed: () => Get.off(getFailed(category)),
-                                child: const Text('Zuletzt falsch'),
-                              ),
-                              SimpleDialogOption(
-                                onPressed: () => Get.off(getFresh(category)),
-                                child: const Text('Frisch'),
-                              ),
-                            ],
-                          );
-                        },
-                      ),
-                      child: Text(
-                        category,
-                        style: GoogleFonts.roboto(fontSize: 20, color: Colors.white),
-                      ),
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.blue[800]),
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.blue[800]),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         )),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          textAlign: TextAlign.center,
+                          category,
+                          style: GoogleFonts.roboto(
+                              fontSize: 25, color: Colors.white),
+                        ),
                       ),
                     ),
                   );
@@ -93,12 +109,12 @@ class TrainingMenu extends StatelessWidget {
     );
   }
 
-Widget getSimulation(String category) {
+  Widget getSimulation(String category) {
     return FutureBuilder<List<Question>>(
       future: QuestionRepository.getSimulationQuestions(category),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
         if (snapshot.hasData) {
-          if (category == Category.categoryF) {
+          if (category == Category.categoryG) {
             return QuizScreen(
               category: category,
               questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
@@ -116,7 +132,7 @@ Widget getSimulation(String category) {
         } else if (snapshot.hasError) {
           return const Text('Error loading simulation questions.');
         } else {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
       },
     );
@@ -128,13 +144,13 @@ Widget getSimulation(String category) {
           category, QuestionRepository.trainingBatchSize),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasError) {
           return Center(child: Text('Error: ${snapshot.error}'));
         }
         if (snapshot.hasData) {
-          if (category == Category.categoryF) {
+          if (category == Category.categoryG) {
             return QuizScreen(
               category: category,
               questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
@@ -150,7 +166,7 @@ Widget getSimulation(String category) {
             );
           }
         }
-        return Center(child: Text('No data available'));
+        return const Center(child: Text('No data available'));
       },
     );
   }
@@ -161,7 +177,7 @@ Widget getSimulation(String category) {
           category, QuestionRepository.trainingBatchSize),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          if (category == Category.categoryF) {
+          if (category == Category.categoryG) {
             return QuizScreen(
               category: category,
               questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
@@ -177,9 +193,9 @@ Widget getSimulation(String category) {
             );
           }
         } else if (snapshot.hasError) {
-          return Center(child: Text("Error loading questions."));
+          return const Center(child: Text("Error loading questions."));
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );
@@ -193,7 +209,7 @@ Widget getSimulation(String category) {
       ),
       builder: (BuildContext context, AsyncSnapshot<List<Question>> snapshot) {
         if (snapshot.hasData) {
-          if (category == Category.categoryF) {
+          if (category == Category.categoryG) {
             return QuizScreen(
               category: category,
               questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
@@ -212,7 +228,7 @@ Widget getSimulation(String category) {
           return Center(
             child: Text(
               'Error: ${snapshot.error}',
-              style: TextStyle(fontSize: 20.0),
+              style: const TextStyle(fontSize: 20.0),
             ),
           );
         } else {

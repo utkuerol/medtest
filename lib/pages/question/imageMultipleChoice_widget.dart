@@ -44,23 +44,21 @@ class ImageMultipleChoiceQuestionWidgetState
   @override
   Widget build(BuildContext context) {
     final choices = (widget.question as ImageMultipleChoiceQuestion).choices;
-    // TODO handle multiple question images
-    final questionImage = Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.black,
-          width: 2.0,
-        ),
+    final questionImage = ClipRRect(
         borderRadius: BorderRadius.circular(8),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Image.asset(
-          (widget.question as ImageMultipleChoiceQuestion).questionImages[0],
-          fit: BoxFit.contain,
-        ),
-      ),
-    );
+        child: Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.black,
+              width: 2.0,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Image.asset(
+            (widget.question as ImageMultipleChoiceQuestion).questionImages[0],
+            fit: BoxFit.fill,
+          ),
+        ));
 
     return SingleChildScrollView(
       child: Column(
@@ -74,15 +72,15 @@ class ImageMultipleChoiceQuestionWidgetState
               child: questionImage,
             ),
           ),
-          const Divider(),
-          GridView.count(
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            crossAxisCount: 3,
-            children: List.generate(
-              choices.length,
-              (index) {
-                final choice = choices[index];
+          const Divider(
+            thickness: 3,
+          ),
+          Center(
+            child: Wrap(
+              runSpacing: 8.0,
+              alignment: WrapAlignment.center,
+              children: choices.map((choice) {
+                final index = choices.indexOf(choice);
                 final isCorrect = index == _correctIndex;
                 final isSelected = _selectedIndex == index;
                 final borderColor = _isAnswered
@@ -99,8 +97,9 @@ class ImageMultipleChoiceQuestionWidgetState
                     : isSelected
                         ? 5.0
                         : 2.0;
-                return Padding(
-                  padding: const EdgeInsets.all(2.0),
+                return Container(
+                  width: MediaQuery.of(context).size.width / 2.2,
+                  padding: const EdgeInsets.all(8.0),
                   child: GestureDetector(
                     onTap: _isAnswered ? null : () => _onAnswerSelected(index),
                     child: Container(
@@ -130,7 +129,7 @@ class ImageMultipleChoiceQuestionWidgetState
                     ),
                   ),
                 );
-              },
+              }).toList(),
             ),
           ),
           Align(

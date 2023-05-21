@@ -55,63 +55,70 @@ class ImageQuestionTextMultipleChoiceQuestionWidgetState
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+          Column(
+            children: [
+              for (Widget questionImage in questionImages) questionImage,
+            ],
+          ),
+          questionText != ""
+              ? Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: SingleChildScrollView(
+                    child: Text(
+                      questionText,
+                      style: const TextStyle(fontSize: 18.0),
+                    ),
+                  ),
+                )
+              : const Padding(padding: EdgeInsets.all(0)),
+          const Divider(
+            thickness: 3,
+          ),
+          SizedBox(
+            height: 500,
+            child: Column(
               children: [
-                for (Widget questionImage in questionImages) questionImage,
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: choices.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final choice = choices[index];
+                    final isCorrect = index == _correctIndex;
+                    final isSelected = _selectedIndex == index;
+                    final color = _isAnswered
+                        ? isCorrect
+                            ? Colors.green
+                            : isSelected
+                                ? Colors.red
+                                : null
+                        : isSelected
+                            ? Colors.blue
+                            : null;
+
+                    return RadioListTile<int>(
+                      value: index,
+                      groupValue: _selectedIndex,
+                      onChanged: _isAnswered ? null : _onAnswerSelected,
+                      title: Text(
+                        choice,
+                        style: TextStyle(
+                          color: color,
+                          fontWeight: isSelected ? FontWeight.bold : null,
+                        ),
+                      ),
+                      activeColor: color ?? Colors.blue,
+                    );
+                  },
+                ),
+                Align(
+                    alignment: Alignment.bottomCenter,
+                    child: widget.isSimulation
+                        ? getSimulationButton()
+                        : getTrainingButton())
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: SingleChildScrollView(
-              child: Text(
-                questionText,
-                style: const TextStyle(fontSize: 18.0),
-              ),
-            ),
-          ),
-          const Divider(),
-          SizedBox(
-            height: 300,
-            child: ListView.builder(
-              itemCount: choices.length,
-              itemBuilder: (BuildContext context, int index) {
-                final choice = choices[index];
-                final isCorrect = index == _correctIndex;
-                final isSelected = _selectedIndex == index;
-                final color = _isAnswered
-                    ? isCorrect
-                        ? Colors.green
-                        : isSelected
-                            ? Colors.red
-                            : null
-                    : isSelected
-                        ? Colors.blue
-                        : null;
-
-                return RadioListTile<int>(
-                  value: index,
-                  groupValue: _selectedIndex,
-                  onChanged: _isAnswered ? null : _onAnswerSelected,
-                  title: Text(
-                    choice,
-                    style: TextStyle(
-                      color: color,
-                      fontWeight: isSelected ? FontWeight.bold : null,
-                    ),
-                  ),
-                  activeColor: color ?? Colors.blue,
-                );
-              },
-            ),
-          ),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: widget.isSimulation
-                  ? getSimulationButton()
-                  : getTrainingButton())
         ],
       ),
     );
@@ -164,21 +171,26 @@ class ImageQuestionTextMultipleChoiceQuestionWidgetState
     List<Widget> imageWidgets = [];
 
     for (String imagePath in questionImages) {
-      Widget imageWidget = Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: Colors.black,
-              width: 2.0,
+      Widget imageWidget = InteractiveViewer(
+        panEnabled: true,
+        panAxis: PanAxis.free,
+        boundaryMargin: const EdgeInsets.all(0),
+        minScale: 1,
+        maxScale: 5,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.black,
+                width: 1.0,
+              ),
             ),
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.contain,
+            child: ClipRRect(
+              child: Image.asset(
+                imagePath,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
