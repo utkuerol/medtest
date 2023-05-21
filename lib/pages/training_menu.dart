@@ -119,7 +119,7 @@ class TrainingMenu extends StatelessWidget {
               category: category,
               questions: (snapshot.data![0] as LongTextMultipleChoiceQuestion)
                   .questions,
-              isSimulation: false,
+              isSimulation: true,
               intro: (snapshot.data![0] as LongTextMultipleChoiceQuestion).text,
             );
           } else {

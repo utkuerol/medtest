@@ -30,7 +30,7 @@ class QuizCompleteScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Get.off(Home()),
+              onPressed: () => Get.off(const Home()),
               child: const Text('Close'),
             ),
           ],
@@ -67,7 +67,7 @@ class TrainingCompleteScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => Get.off(Home()),
+              onPressed: () => Get.off(const Home()),
               child: const Text('Return to home'),
             ),
             const SizedBox(height: 16),

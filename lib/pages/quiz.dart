@@ -8,6 +8,8 @@ import 'package:medtest/logic/model/textmultiplechoice_question.dart';
 import 'package:medtest/pages/question/question_widget_builder.dart';
 import 'package:medtest/pages/results.dart';
 
+import '../logic/model/imagemultiplechoice_question.dart';
+
 class QuizScreen extends StatefulWidget {
   final List<Question> questions;
   final String category;
@@ -100,6 +102,7 @@ class QuizScreenState extends State<QuizScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            if (widget.isSimulation) buildTimer(),
             _buildIntro(),
             const Divider(),
             ElevatedButton(
@@ -188,9 +191,16 @@ class QuizScreenState extends State<QuizScreen> {
   int calculateScore() {
     int correctAnswers = 0;
     for (int i = 0; i < widget.questions.length; i++) {
-      final question = widget.questions[i] as TextMultipleChoiceQuestion;
-      if (_userAnswers[i] == question.answer) {
-        correctAnswers++;
+      if (widget.questions[i] is TextMultipleChoiceQuestion) {
+        final question = widget.questions[i] as TextMultipleChoiceQuestion;
+        if (_userAnswers[i] == question.answer) {
+          correctAnswers++;
+        }
+      } else if (widget.questions[i] is ImageMultipleChoiceQuestion) {
+        final question = widget.questions[i] as ImageMultipleChoiceQuestion;
+        if (_userAnswers[i] == question.answer) {
+          correctAnswers++;
+        }
       }
     }
     return correctAnswers;
