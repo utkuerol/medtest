@@ -65,15 +65,19 @@ class ImageMultipleChoiceQuestionWidgetState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 11.0),
             child: SizedBox(
               width: double.infinity,
               height: 300,
               child: questionImage,
             ),
           ),
-          const Divider(
-            thickness: 3,
+          Padding(
+            child: const Divider(
+                thickness: 3,
+                color: Colors.black
+            ),
+            padding: EdgeInsets.only(bottom:5)
           ),
           Center(
             child: Wrap(
@@ -98,8 +102,7 @@ class ImageMultipleChoiceQuestionWidgetState
                         ? 5.0
                         : 2.0;
                 return Container(
-                  width: MediaQuery.of(context).size.width / 2.2,
-                  padding: const EdgeInsets.all(8.0),
+                  width: MediaQuery.of(context).size.width / 3.3,
                   child: GestureDetector(
                     onTap: _isAnswered ? null : () => _onAnswerSelected(index),
                     child: Container(
