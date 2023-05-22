@@ -15,7 +15,7 @@ class TrainingMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("MedTest"),
+        title: const Text("NCTrainer"),
         actions: [
           IconButton(
             icon: const Icon(Icons.home),

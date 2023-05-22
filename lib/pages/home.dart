@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(context) => Scaffold(
-        appBar: AppBar(title: const Text("MedTest")),
+        appBar: AppBar(title: const Text("NCTrainer")),
         body: Padding(
           padding: const EdgeInsets.all(15),
           child: Column(
