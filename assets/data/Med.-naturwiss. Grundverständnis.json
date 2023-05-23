@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "question": " Die Verdauung ist ein komplexer Prozess, der im Mund beginnt und im Dünndarm endet. Die verschiedenen Organe des Verdauungssystems sind aufeinander abgestimmt, um Nahrung zu zerlegen und Nährstoffe aufzunehmen.\nIm Mund zerkleinern die Zähne die Nahrung, während Speichel Amylase enthält, ein Enzym, das den Abbau von Kohlenhydraten in einfachere Zuckerarten einleitet.\nDer Magen produziert Salzsäure und Pepsin, die Proteine in kleinere Peptide spalten. Im Dünndarm werden Enzyme aus der Bauchspeicheldrüse und der Gallenflüssigkeit aus der Leber freigesetzt, um Fette, Proteine und Kohlenhydrate weiter abzubauen. Die Darmwand nimmt die kleineren Moleküle auf und leitet sie ins Blut.\n\nWelche Aussage trifft gemäß obigen Text zu?",
+    "question": "Die Verdauung ist ein komplexer Prozess, der im Mund beginnt und im Dünndarm endet. Die verschiedenen Organe des Verdauungssystems sind aufeinander abgestimmt, um Nahrung zu zerlegen und Nährstoffe aufzunehmen.\nIm Mund zerkleinern die Zähne die Nahrung, während Speichel Amylase enthält, ein Enzym, das den Abbau von Kohlenhydraten in einfachere Zuckerarten einleitet.\nDer Magen produziert Salzsäure und Pepsin, die Proteine in kleinere Peptide spalten. Im Dünndarm werden Enzyme aus der Bauchspeicheldrüse und der Gallenflüssigkeit aus der Leber freigesetzt, um Fette, Proteine und Kohlenhydrate weiter abzubauen. Die Darmwand nimmt die kleineren Moleküle auf und leitet sie ins Blut.\n\nWelche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Die Hauptfunktion des Speichels besteht darin, Fette abzubauen.",
       "Der Magen produziert Enzyme, die ausschließlich für den Abbau von Kohlenhydraten verantwortlich sind.",
@@ -37,7 +37,7 @@
   },
   {
     "id": 4,
-    "question": " Die Nieren sind bohnenförmige Organe, die eine wichtige Rolle bei der Aufrechterhaltung der Homöostase im Körper spielen. Sie filtern das Blut, um Abfallstoffe, überschüssige Elektrolyte und Flüssigkeiten zu entfernen und helfen so, den Blutdruck, den pH-Wert und das Flüssigkeitsvolumen im Körper zu regulieren. Die Nieren bilden Urin, der in den Nierenbecken gesammelt wird und dann durch die Harnleiter in die Blase transportiert wird. Die Nieren enthalten Nephronen, die funktionelle Einheiten, die den Filtrationsprozess durchführen. Jedes Nephron besteht aus einem Glomerulus, einem Netzwerk von Kapillaren, das Blut filtert, und einem Tubulussystem, das den filtrierten Flüssigkeiten ermöglicht, sich in Urin umzuwandeln.\n\n Welche Aussage trifft gemäß obigen Text zu?",
+    "question": "Die Nieren sind bohnenförmige Organe, die eine wichtige Rolle bei der Aufrechterhaltung der Homöostase im Körper spielen. Sie filtern das Blut, um Abfallstoffe, überschüssige Elektrolyte und Flüssigkeiten zu entfernen und helfen so, den Blutdruck, den pH-Wert und das Flüssigkeitsvolumen im Körper zu regulieren.\nDie Nieren bilden Urin, der in den Nierenbecken gesammelt wird und dann durch die Harnleiter in die Blase transportiert wird. Die Nieren enthalten Nephronen, die funktionelle Einheiten, die den Filtrationsprozess durchführen. Jedes Nephron besteht aus einem Glomerulus, einem Netzwerk von Kapillaren, das Blut filtert, und einem Tubulussystem, das den filtrierten Flüssigkeiten ermöglicht, sich in Urin umzuwandeln.\n\n Welche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Die Nieren produzieren Blut.",
       "Der Harnleiter ist ein Muskel.",
