@@ -66,7 +66,7 @@ class ImageQuestionTextMultipleChoiceQuestionWidgetState
                   child: SingleChildScrollView(
                     child: Text(
                       questionText,
-                      style: const TextStyle(fontSize: 18.0),
+                      style: const TextStyle(fontSize: 12.0),
                     ),
                   ),
                 )

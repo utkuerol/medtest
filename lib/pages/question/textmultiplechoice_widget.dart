@@ -54,7 +54,7 @@ class TextMultipleChoiceQuestionWidgetState
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Text(
               question,
-              style: const TextStyle(fontSize: 18.0),
+              style: const TextStyle(fontSize: 15.0),
             ),
           ),
           const Divider(

@@ -10,12 +10,12 @@ class Home extends StatelessWidget {
   Widget build(context) => Scaffold(
         appBar: AppBar(title: const Text("NCTrainer")),
         body: Padding(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20),
+                padding: const EdgeInsets.symmetric(vertical: 25),
                 child: Text(
                   "NC Trainer",
                   style: Theme.of(context).textTheme.headlineLarge,
@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 30),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

@@ -91,7 +91,7 @@ class QuizScreenState extends State<QuizScreen> {
       padding: const EdgeInsets.all(16.0),
       child: Text(
         widget.intro!,
-        style: const TextStyle(fontSize: 18.0),
+        style: const TextStyle(fontSize: 15.0),
       ),
     );
   }
