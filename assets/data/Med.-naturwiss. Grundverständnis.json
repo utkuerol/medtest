@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "question": "Das Herz besteht aus vier Kammern: zwei Vorhöfen und zwei Ventrikeln. Die rechte Seite des Herzens pumpt sauerstoffarmes Blut in die Lunge, während die linke Seite sauerstoffreiches Blut in den Körperkreislauf pumpt. Die Herzklappen sorgen dafür, dass das Blut in die richtige Richtung fließt. Es gibt vier Klappen: die Mitralklappe und die Trikuspidalklappe, die als Hauptklappen zwischen den Vorhöfen und Ventrikeln wirken, sowie die Aortenklappe und die Pulmonalklappe, die als Taschenklappen den Blutfluss aus den Kammern in die Aorta bzw. die Lungenarterie regulieren. Die linke und rechte Seite des Herzens sind in ihrer Funktion unterschiedlich, aber beide tragen zur Aufrechterhaltung der Blutzirkulation bei.\n\nWelche Aussage trifft gemäß obigen Text zu?",
+    "question": "Das Herz besteht aus vier Kammern: zwei Vorhöfen und zwei Ventrikeln. Die rechte Seite des Herzens pumpt sauerstoffarmes Blut in die Lunge, während die linke Seite sauerstoffreiches Blut in den Körperkreislauf pumpt. Die Herzklappen sorgen dafür, dass das Blut in die richtige Richtung fließt.\nEs gibt vier Klappen: die Mitralklappe und die Trikuspidalklappe, die als Hauptklappen zwischen den Vorhöfen und Ventrikeln wirken, sowie die Aortenklappe und die Pulmonalklappe, die als Taschenklappen den Blutfluss aus den Kammern in die Aorta bzw. die Lungenarterie regulieren. Die linke und rechte Seite des Herzens sind in ihrer Funktion unterschiedlich, aber beide tragen zur Aufrechterhaltung der Blutzirkulation bei.\n\nWelche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Die Hauptfunktion der Aortenklappe besteht darin, sauerstoffarmes Blut in die Lungenarterie zu leiten.",
       "Die linke Seite des Herzens pumpt Blut mit gleichem Sauerstoffgehalt wie die rechte Seite. ",
@@ -13,7 +13,7 @@
   },
   {
     "id": 2,
-    "question": "Das menschliche Gehirn besteht aus drei Hauptteilen: dem Großhirn, dem Kleinhirn und dem Hirnstamm. Das Großhirn ist für höhere kognitive Funktionen wie Denken, Wahrnehmen und Entscheiden verantwortlich. Es besteht aus zwei Hemisphären, die durch den Balken miteinander verbunden sind. Jede Hemisphäre ist in vier Lappen unterteilt: den Stirnlappen, den Scheitellappen, den Schläfenlappen und den Hinterhauptlappen. Diese Lappen sind für verschiedene Funktionen verantwortlich, einschließlich sensorischer Verarbeitung, motorischer Steuerung, Gedächtnis und Sprache.\nWelche Aussage trifft gemäß obigen Text zu?",
+    "question": "Das menschliche Gehirn besteht aus drei Hauptteilen: dem Großhirn, dem Kleinhirn und dem Hirnstamm.\nDas Großhirn ist für höhere kognitive Funktionen wie Denken, Wahrnehmen und Entscheiden verantwortlich. Es besteht aus zwei Hemisphären, die durch den Balken miteinander verbunden sind.\nJede Hemisphäre ist in vier Lappen unterteilt: den Stirnlappen, den Scheitellappen, den Schläfenlappen und den Hinterhauptlappen. Diese Lappen sind für verschiedene Funktionen verantwortlich, einschließlich sensorischer Verarbeitung, motorischer Steuerung, Gedächtnis und Sprache.\n\nWelche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Das Kleinhirn ist hauptsächlich für die sensorische Verarbeitung verantwortlich.",
       "Der Balken verbindet das Großhirn mit dem Hirnstamm.",
@@ -25,7 +25,7 @@
   },
   {
     "id": 3,
-    "question": " Die Verdauung ist ein komplexer Prozess, der im Mund beginnt und im Dünndarm endet. Die verschiedenen Organe des Verdauungssystems sind aufeinander abgestimmt, um Nahrung zu zerlegen und Nährstoffe aufzunehmen. Im Mund zerkleinern die Zähne die Nahrung, während Speichel Amylase enthält, ein Enzym, das den Abbau von Kohlenhydraten in einfachere Zuckerarten einleitet. Der Magen produziert Salzsäure und Pepsin, die Proteine in kleinere Peptide spalten. Im Dünndarm werden Enzyme aus der Bauchspeicheldrüse und der Gallenflüssigkeit aus der Leber freigesetzt, um Fette, Proteine und Kohlenhydrate weiter abzubauen. Die Darmwand nimmt die kleineren Moleküle auf und leitet sie ins Blut.\n\nWelche Aussage trifft gemäß obigen Text zu?",
+    "question": " Die Verdauung ist ein komplexer Prozess, der im Mund beginnt und im Dünndarm endet. Die verschiedenen Organe des Verdauungssystems sind aufeinander abgestimmt, um Nahrung zu zerlegen und Nährstoffe aufzunehmen.\nIm Mund zerkleinern die Zähne die Nahrung, während Speichel Amylase enthält, ein Enzym, das den Abbau von Kohlenhydraten in einfachere Zuckerarten einleitet.\nDer Magen produziert Salzsäure und Pepsin, die Proteine in kleinere Peptide spalten. Im Dünndarm werden Enzyme aus der Bauchspeicheldrüse und der Gallenflüssigkeit aus der Leber freigesetzt, um Fette, Proteine und Kohlenhydrate weiter abzubauen. Die Darmwand nimmt die kleineren Moleküle auf und leitet sie ins Blut.\n\nWelche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Die Hauptfunktion des Speichels besteht darin, Fette abzubauen.",
       "Der Magen produziert Enzyme, die ausschließlich für den Abbau von Kohlenhydraten verantwortlich sind.",
@@ -37,7 +37,7 @@
   },
   {
     "id": 4,
-    "question": " Die Nieren sind bohnenförmige Organe, die eine wichtige Rolle bei der Aufrechterhaltung der Homöostase im Körper spielen. Sie filtern das Blut, um Abfallstoffe, überschüssige Elektrolyte und Flüssigkeiten zu entfernen und helfen so, den Blutdruck, den pH-Wert und das Flüssigkeitsvolumen im Körper zu regulieren. Die Nieren bilden Urin, der in den Nierenbecken gesammelt wird und dann durch die Harnleiter in die Blase transportiert wird. Die Nieren enthalten Nephronen, die funktionelle Einheiten, die den Filtrationsprozess durchführen. Jedes Nephron besteht aus einem Glomerulus, einem Netzwerk von Kapillaren, das Blut filtert, und einem Tubulussystem, das den filtrierten Flüssigkeiten ermöglicht, sich in Urin umzuwandeln. \\n Welche Aussage trifft gemäß obigen Text zu?",
+    "question": " Die Nieren sind bohnenförmige Organe, die eine wichtige Rolle bei der Aufrechterhaltung der Homöostase im Körper spielen. Sie filtern das Blut, um Abfallstoffe, überschüssige Elektrolyte und Flüssigkeiten zu entfernen und helfen so, den Blutdruck, den pH-Wert und das Flüssigkeitsvolumen im Körper zu regulieren. Die Nieren bilden Urin, der in den Nierenbecken gesammelt wird und dann durch die Harnleiter in die Blase transportiert wird. Die Nieren enthalten Nephronen, die funktionelle Einheiten, die den Filtrationsprozess durchführen. Jedes Nephron besteht aus einem Glomerulus, einem Netzwerk von Kapillaren, das Blut filtert, und einem Tubulussystem, das den filtrierten Flüssigkeiten ermöglicht, sich in Urin umzuwandeln.\n\n Welche Aussage trifft gemäß obigen Text zu?",
     "choices": [
       "Die Nieren produzieren Blut.",
       "Der Harnleiter ist ein Muskel.",
