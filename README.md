@@ -1,5 +1,7 @@
 # medtest
 
+Cross-platform mobile app for practicing for the mandatory aptitude test for medical studies in Switzerland (EMS).
+
 ## Categories 
 
 ```<Category code>:<title>```
